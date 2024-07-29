@@ -1,0 +1,36 @@
+<% if (body.table["status"]==200) { %>
+
+    <div class="title">
+        <h2>Modificar <%- body.email %></h2>
+    </div>
+    
+    <%- include('../components/message', { value: "" }) %>
+    
+    <div class="center">
+        <div class="form">
+            <form id="form">
+                <div class="form-column">
+                    <% registro = body.table["data"][0] %>
+                    <%- include('../components/input', { label: "Nome:" , type: "text" , value: `${registro.nome}` , id: "nome" }) %>
+                    <%- include('../components/input', { label: "E-mail:" , type: "text" , value: `${registro.email}` , id: "email" }) %>
+                    <%- include('../components/input', { label: "Senha:" , type: "password" , value: "" , id: "senha" })%>
+                    <%- include('../components/input-not-required', { label: "Nova senha (não obrigatório):" , type: "password" , value: "" ,
+                    id: "novaSenha" }) %>
+                    <%- include('../components/input-not-required', { label: "Confirmar nova senha:" , type: "password" , value: "" ,
+                    id: "confirmarSenha" }) %>
+                </div>
+        
+                <div class="submit">
+                    <button class="secondary">Modificar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<% } else { %>
+
+    <script>
+        window.location.replace("/");
+    </script>
+
+<% } %>

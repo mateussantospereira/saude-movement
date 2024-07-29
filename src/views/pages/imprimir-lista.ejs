@@ -1,0 +1,59 @@
+<div class="title">
+    <h2>Impressão de Relatório</h2>
+</div>
+
+<% if (body.table["status"]==200) { %>
+
+    <div>
+        <%- include('../components/search', { placeholder: "Procurar colaborador" }) %>
+
+        <div class="center">
+            <button class="secondary" id="imprimir">Imprimir</button>
+            <%- include('../components/carregamento') %>
+        </div>
+    </div>
+
+    <%- include('../components/colaboradores', { table: body.table, email: true, report: true }); %>
+
+<% } else { %>
+
+    <div>
+        <p id="message">
+            <%= body.table["message"] %>
+        </p>
+    </div>
+
+<% } %>
+
+<script>
+    const imprimirButton = document.getElementById("imprimir");
+
+    async function openFile(url) {
+        const response = fetch(url)
+            .then((chunk) => { return chunk.blob() })
+            .then(async (data) => {
+                let url = URL.createObjectURL(data);
+                await finishLoading(() => {
+                    window.open(url).print();
+                }, imprimirButton);
+            });
+    }
+
+    async function imprimir(list) {
+        const response = await fetchUrlencoded("/registro/imprimir-lista", "POST", list, true);
+        
+        if (response.error == false) {
+            openFile(response.data);
+        } else {
+            await finishLoading(() => {
+                erro(response.message);
+            }, imprimirButton);
+        };
+    };
+
+        imprimirButton.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            enviarLista(imprimir, imprimirButton);
+        });
+</script>

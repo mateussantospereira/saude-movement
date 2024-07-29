@@ -1,0 +1,29 @@
+<div class="center">
+    <div class="table">
+        <% head = {
+            nome: "Nome",
+        } %>
+
+        <% if (email) { %>
+            <% head.email = "E-mail" %>
+        <% } %>
+
+        <% 
+            head.idade = "Idade",
+            head.imc = "IMC",
+            head.saude = "Saúde"
+        %>
+
+        <% if (report) { %>
+            <% head.relatorio = "Relatório" %>
+        <% } %>
+
+       
+
+        <%- include('./table', {
+            head: head,
+
+            table: table["data"]
+        }) %>
+    </div>
+</div>

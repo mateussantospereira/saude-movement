@@ -1,0 +1,15 @@
+<body>
+    <%- include('../components/header') %>
+
+    <main>
+        <div class="box-content">
+            <%- include('../components/bar', { userType: body.userType }) %>
+
+            <div class="content">
+                <%- include(`../pages/${body.body}`, { body: body }) %>
+            </div>
+        </div>
+    </main>
+
+    <%- include('../components/footer') %>
+</body>

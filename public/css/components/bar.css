@@ -1,0 +1,14 @@
+.bar {
+    width: 19vw;
+    background-color: var(--color-main-3);
+}
+
+.buttons button {
+    width: 100%;
+    padding: 0.7vh 1vw;
+    border: solid 1px;
+}
+
+.buttons button:hover {
+    background-color: var(--color-main-1);
+}

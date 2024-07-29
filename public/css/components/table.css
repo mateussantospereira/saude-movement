@@ -1,0 +1,62 @@
+.table {
+    max-height: 67vh;
+    margin: 1vh 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.table::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(178, 178, 178);
+}
+
+.table::-webkit-scrollbar-thumb {
+    height: 4px;
+    border-radius: 0px;
+    width: 3px;
+    background-color: rgb(102, 102, 102);
+}
+
+.table table {
+    border: solid 1px;
+    border: solid 1px;
+    padding: 0 !important;
+    text-indent: initial;
+    border-spacing: 1px !important;
+    height: 100%;
+}
+
+th {
+    background-color: var(--color-main-1);
+}
+
+th, td {
+    padding: 0px !important;
+    border: 1px solid;
+}
+
+th p, td p {
+    margin: 0 !important;
+    padding: 0.5vh 0.8vw;
+}
+
+td {
+    background-color: white;
+}
+
+td a {
+    height: 100%;
+}
+
+td button {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    background-color: var(--color-main-2);
+}
+
+td button:hover {
+    background-color: var(--color-main-1);
+}

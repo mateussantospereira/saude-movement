@@ -1,0 +1,48 @@
+insert into db_saude_movement.registros (nome, email, senha, tipo) values 
+("Mateus dos Santos Pereira", "mateus@gmail.com", "$2a$08$FoihNm9J11pFPOJiWZ/WLOJN7KNqjbZG0GCF8Ow37Ccmr7DkFxQFi", "Adm"),
+("João Sebastião", "sebastiao@gmail.com", "$2a$08$FoihNm9J11pFPOJiWZ/WLOJN7KNqjbZG0GCF8Ow37Ccmr7DkFxQFi", "RH"),
+("José Geraldo", "geraldo@gmail.com", "$2a$08$FoihNm9J11pFPOJiWZ/WLOJN7KNqjbZG0GCF8Ow37Ccmr7DkFxQFi", "RH");
+
+insert into db_saude_movement.registros (nome, email, senha, idade, imc, saude, data, tipo) values 
+("Pedro de Alcântara", "pedro@gmail.com", "$2a$08$FoihNm9J11pFPOJiWZ/WLOJN7KNqjbZG0GCF8Ow37Ccmr7DkFxQFi", "26", "24.43", "92%", "2024-07-11", "Colaborador"),
+("João Carlos Leopoldo", "joao@gmail.com", "$2a$08$FoihNm9J11pFPOJiWZ/WLOJN7KNqjbZG0GCF8Ow37Ccmr7DkFxQFi", "34", "22.87", "87%", "2024-07-11", "Colaborador"),
+("Francisco Xavier de Paula", "francisco@gmail.com", "$2a$08$FoihNm9J11pFPOJiWZ/WLOJN7KNqjbZG0GCF8Ow37Ccmr7DkFxQFi", "43", "19.11", "76%", "2024-07-11", "Colaborador"),
+("Leocádio Miguel", "leocadio@gmail.com", "$2a$08$FoihNm9J11pFPOJiWZ/WLOJN7KNqjbZG0GCF8Ow37Ccmr7DkFxQFi", "32", "20.23", "89%", "2024-07-11", "Colaborador"),
+("Gabriel Rafael Gonzaga", "rafael@gmail.com", "$2a$08$FoihNm9J11pFPOJiWZ/WLOJN7KNqjbZG0GCF8Ow37Ccmr7DkFxQFi", "29", "21.65", "86%", "2024-07-11", "Colaborador");
+
+insert into db_saude_movement.historico (nome, email, idade, imc, saude, data) values 
+("Pedro de Alcântara", "pedro@gmail.com", "26", "24.43", "92%", "2024-07-08"),
+("João Carlos Leopoldo", "joao@gmail.com", "34", "22.87", "87%", "2024-07-08"),
+("Francisco Xavier de Paula", "francisco@gmail.com", "43", "19.11", "76%", "2024-07-08"),
+("Leocádio Miguel", "leocadio@gmail.com", "32", "20.23", "89%", "2024-07-08"),
+("Gabriel Rafael Gonzaga", "rafael@gmail.com", "29", "21.65", "86%", "2024-07-08"),
+("Pedro de Alcântara", "pedro@gmail.com", "26", "24.43", "92%", "2024-07-09"),
+("João Carlos Leopoldo", "joao@gmail.com", "34", "22.87", "87%", "2024-07-09"),
+("Francisco Xavier de Paula", "francisco@gmail.com", "43", "19.11", "76%", "2024-07-09"),
+("Leocádio Miguel", "leocadio@gmail.com", "32", "20.23", "89%", "2024-07-09"),
+("Gabriel Rafael Gonzaga", "rafael@gmail.com", "29", "21.65", "86%", "2024-07-09"),
+("Pedro de Alcântara", "pedro@gmail.com", "26", "24.43", "92%", "2024-07-10"),
+("João Carlos Leopoldo", "joao@gmail.com", "34", "22.87", "87%", "2024-07-10"),
+("Francisco Xavier de Paula", "francisco@gmail.com", "43", "19.11", "76%", "2024-07-10"),
+("Leocádio Miguel", "leocadio@gmail.com", "32", "20.23", "89%", "2024-07-10"),
+("Gabriel Rafael Gonzaga", "rafael@gmail.com", "29", "21.65", "86%", "2024-07-10"),
+("Pedro de Alcântara", "pedro@gmail.com", "26", "24.43", "92%", "2024-07-11"),
+("João Carlos Leopoldo", "joao@gmail.com", "34", "22.87", "87%", "2024-07-11"),
+("Francisco Xavier de Paula", "francisco@gmail.com", "43", "19.11", "76%", "2024-07-11"),
+("Leocádio Miguel", "leocadio@gmail.com", "32", "20.23", "89%", "2024-07-11"),
+("Gabriel Rafael Gonzaga", "rafael@gmail.com", "29", "21.65", "86%", "2024-07-11"),
+("Pedro de Alcântara", "pedro@gmail.com", "26", "24.43", "92%", "2024-07-12"),
+("João Carlos Leopoldo", "joao@gmail.com", "34", "22.87", "87%", "2024-07-12"),
+("Francisco Xavier de Paula", "francisco@gmail.com", "43", "19.11", "76%", "2024-07-12"),
+("Leocádio Miguel", "leocadio@gmail.com", "32", "20.23", "89%", "2024-07-12"),
+("Gabriel Rafael Gonzaga", "rafael@gmail.com", "29", "21.65", "86%", "2024-07-12"),
+("Pedro de Alcântara", "pedro@gmail.com", "26", "24.43", "92%", "2024-07-13"),
+("João Carlos Leopoldo", "joao@gmail.com", "34", "22.87", "87%", "2024-07-13"),
+("Francisco Xavier de Paula", "francisco@gmail.com", "43", "19.11", "76%", "2024-07-13"),
+("Leocádio Miguel", "leocadio@gmail.com", "32", "20.23", "89%", "2024-07-13"),
+("Gabriel Rafael Gonzaga", "rafael@gmail.com", "29", "21.65", "86%", "2024-07-13"),
+("Pedro de Alcântara", "pedro@gmail.com", "26", "24.43", "92%", "2024-07-14"),
+("João Carlos Leopoldo", "joao@gmail.com", "34", "22.87", "87%", "2024-07-14"),
+("Francisco Xavier de Paula", "francisco@gmail.com", "43", "19.11", "76%", "2024-07-14"),
+("Leocádio Miguel", "leocadio@gmail.com", "32", "20.23", "89%", "2024-07-14"),
+("Gabriel Rafael Gonzaga", "rafael@gmail.com", "29", "21.65", "86%", "2024-07-14");

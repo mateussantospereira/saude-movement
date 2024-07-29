@@ -1,0 +1,55 @@
+<div class="title">
+    <h2>Colaboradores</h2>
+</div>
+
+<% if (body.table["status"]==200) { %>
+
+    <%- include('../components/colaborador', { table: body.table }); %>
+
+    <div class="center">
+        <button class="secondary" id="imprimir-button">
+            Imprimir relatório
+        </button>
+    </div>
+
+<% } else { %>
+
+    <script>
+        window.location.replace("/");
+    </script>
+
+<% } %>
+
+<script>
+    const email = "<%- body.email %>";
+    const imprimirButton = document.getElementById("imprimir-button");
+
+    async function openFile(url) {
+        const response = fetch(url)
+            .then((chunk) => { return chunk.blob() })
+            .then(async (data) => {
+                let url = URL.createObjectURL(data);
+                await finishLoading(() => {
+                    window.open(url).print();
+                }, imprimirButton);
+            });
+    }
+
+    async function imprimir(list) {
+        const response = await fetchUrlencoded(`/registro/imprimir-relatorio/pedro@gmail.com`, "POST", list);
+
+        if (response.error == false) {
+            openFile(response.data);
+        } else {
+            await finishLoading(() => {
+                erro(response.message);
+            }, imprimirButton);
+        };
+    };
+
+    imprimirButton.addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        imprimir({email: email})
+    });
+</script>

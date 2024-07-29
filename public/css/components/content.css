@@ -1,0 +1,31 @@
+.content {
+    height: 86vh !important;
+    width: 81vw;
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color: rgb(216, 216, 216);
+    padding-top: 1vh;
+}
+
+.content::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(178, 178, 178);
+}
+
+.content::-webkit-scrollbar-thumb {
+    height: 4px;
+    border-radius: 0px;
+    width: 3px;
+    background-color: rgb(102, 102, 102);
+}
+
+.content-main {
+    width: auto;
+    height: auto;
+    padding: 2vh 2vw;
+}
+
+.content-margin {
+    color: transparent;
+    margin-bottom: 0;
+}

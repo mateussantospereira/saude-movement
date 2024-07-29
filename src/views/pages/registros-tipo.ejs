@@ -1,0 +1,15 @@
+<% if (body.table["status"]==200) { %>
+
+    <div class="title">
+        <h2>Classe <%= body.table["data"][0]["tipo"]%></h2>
+    </div>
+
+    <%- include('../components/registros', { table: body.table }); %>
+
+<% } else { %>
+
+    <script>
+        window.location.replace("/");
+    </script>
+
+<% } %>
