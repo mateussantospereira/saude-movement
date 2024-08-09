@@ -3,7 +3,7 @@
     width: 81vw;
     overflow: hidden;
     overflow-y: scroll;
-    background-color: rgb(216, 216, 216);
+    background-color: var(--background-color-content);
     padding-top: 1vh;
 }
 

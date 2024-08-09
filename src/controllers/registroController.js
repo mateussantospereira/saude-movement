@@ -90,7 +90,7 @@ class registroController {
         const service = await xlsxService.createImportedFile(req, kilobyte, fileName);
 
         if (service.status != 201) {
-            return deleteFile(fileName, 400, true, service.message);
+            return deleteFile(res, fileName, 400, true, service.message);
         }
 
         return await readXLSX();
@@ -101,21 +101,21 @@ class registroController {
                 const support = await registroSupport.valideXLSX(service.data, fields);
 
                 if (support.status != 200) {
-                    return deleteFile(fileName, 400, true, support.message);
+                    return deleteFile(res, fileName, 400, true, support.message);
                 }
 
                 return registrar(support.data);
 
                 async function registrar(data) {
                     for (let line of data) {
-                        const registro = await registroSupport.criar(line);
+                        const registro = await registroSupport.atualizar(line);
 
                         if (registro.status != 201) {
-                            return deleteFile(fileName, 400, true, "Erro ao cadastrar lista de registros.");
+                            return deleteFile(res, fileName, 400, true, "Erro ao cadastrar lista de registros.");
                         }
                     }
 
-                    return deleteFile(fileName, 201, false, "Importação concluída com êxito.");
+                    return deleteFile(res, fileName, 201, false, "Importação concluída com êxito.");
                 }
             }
 
@@ -123,7 +123,86 @@ class registroController {
                 return await readFile();
             } catch (error) {
                 console.log(error)
-                return deleteFile(fileName, 
+                return deleteFile(res, fileName, 
+                    400, true, "Erro ao ler arquivo. Envie um arquivo XLSX válido.");
+            }
+        }
+    }
+
+    async exportar(req, res) {
+        const fileName = `${Date.now()}${req["sessionID"]}`;
+        const body = { list: `${req.body.list},` };
+        const fields = await registroField.exportar();
+        const support = await registroSupport.valideList(body, fields.list);
+
+        if (support.status != 200) {
+            return res.status(support.status).json(support);
+        }
+
+        createXLSX(support.data, fields.head);
+
+        async function createXLSX(data, head) {
+            const client = await xlsxService.exportar(data, head, fileName);
+
+            res.status(client.status).json(client);
+
+            if (client.status == 201) {
+                new Promise(() => {
+                    setTimeout(() => {
+                        fs.unlinkSync((`./${client.data}`));
+                    }, 3000);
+                });
+            }
+        }
+    }
+
+    async importarAtualizacao(req, res) {
+        const fileName = `${Date.now()}${req["sessionID"]}`;
+        const importarField = await registroField.importarAtualizacao();
+        const kilobyte = importarField.kilobyte;
+
+        const service = await xlsxService.createImportedFile(req, kilobyte, fileName);
+
+        if (service.status != 201) {
+            return deleteFile(res, fileName, 400, true, service.message);
+        }
+
+        return await readXLSX();
+
+        async function readXLSX() {
+            async function readFile() {
+                const fields = importarField.fields;
+                const support = await registroSupport.valideUpdateXLSX(service.data, fields);
+
+                if (support.status != 200) {
+                    return deleteFile(res, fileName, 400, true, support.message);
+                }
+
+                return registrar(support.data);
+
+                async function registrar(data) {
+                    for (let line of data) {
+                        let email = line.email;
+                        delete line.idade;
+                        delete line.email;
+                        const registro = await registroSupport.atualizar(email, line);
+
+                        console.log(line)
+                        console.log(registro)
+                        if (registro.status != 200) {
+                            return deleteFile(res, fileName, 400, true, registro.message);
+                        }
+                    }
+
+                    return deleteFile(res, fileName, 201, false, "Importação concluída com êxito.");
+                }
+            }
+
+            try {
+                return await readFile();
+            } catch (error) {
+                console.log(error)
+                return deleteFile(res, fileName, 
                     400, true, "Erro ao ler arquivo. Envie um arquivo XLSX válido.");
             }
         }
@@ -145,10 +224,21 @@ class registroController {
             return res.status(client.status).json(client);
         }
 
-        gerarPDF(client.data, fields.options);
+        client["data"].forEach((i) => {
+            i.email = email;
+        });
 
-        async function gerarPDF(data, options) {
-            const service = await pdfService.imprimir(data, options, fileName);
+        let text = `
+            <div class="text">
+                <h3>Histórico de saúde do colaborador</h3>
+                <p>Este é o relatório do histórico saúde do colaborador ${client.data[0].nome}.</p>
+            </div>
+        `;
+
+        gerarPDF(client.data, fields.options, fields.head, text);
+
+        async function gerarPDF(data, options, head, text) {
+            const service = await pdfService.imprimir(data, options, head, text, fileName);
 
             res.status(service.status).json(service);
 
@@ -172,10 +262,10 @@ class registroController {
             return res.status(support.status).json(support);
         }
 
-        gerarPDF(support.data, fields.options);
+        gerarPDF(support.data, fields.options, fields.head, fields.textList);
 
-        async function gerarPDF(data, options) {
-            const service = await pdfService.imprimir(data, options, fileName);
+        async function gerarPDF(data, options, head, text) {
+            const service = await pdfService.imprimir(data, options, head, text, fileName);
 
             res.status(service.status).json(service);
 

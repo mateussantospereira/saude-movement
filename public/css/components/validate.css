@@ -5,52 +5,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(24, 24, 24);
 }
 
-.box-validate {
-    margin-bottom: 20vh;
-}
 
 .form-validate {
-    border: solid 1px rgba(76, 76, 76, 0.353);
-    padding: 3vh 1.5vw;
-    background-color: rgba(0, 0, 0, 0.268);
-    color: #eaffd8;
+    padding: 5.5vh 2.2vw;
+    background-color: rgb(57, 57, 57);
+    color: #ffffff;
+    /* border-radius: 12px; */
 }
 
 .form-validate img {
-    width: 220px;
+    width: 20vw;
 }
 
 #title-validate {
-    margin: 2.5vh 0 !important;
+    margin-top: 3vh;
+    margin-bottom: 1.5vh;
 }
 
 .form-validate input {
-    margin-top: 0.5vh;
+    margin-top: 0.8vh;
     margin-bottom: 1vh;
+    /* border-radius: 5px; */
 }
 
 
 .form-validate input {
     box-sizing: border-box;
     border: none;
-    background-color: var(--color-main-2) !important;
+    background-color: white !important;
   }
 
   .form-validate input:autofill {
     -webkit-text-fill-color: black !important;
-    -webkit-box-shadow: 0 0 0px 1000px var(--color-main-2) inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
     font-size: var(--font-size);
 }
 .form-validate button {
-    margin-top: 2vh;
+    margin-top: 3vh;
 }
 
 #footer-validate {
     margin-top: 4vh !important;
-    color: var(--color-main-1);
+    color: var(--green-1);
     display: flex;
     justify-content: center;
     align-items: center;

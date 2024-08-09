@@ -1,6 +1,6 @@
 header {
-    height: 8vh;
-    background-color: rgb(36, 36, 36);
+    height: var(--height-header);
+    background-color: var(--gray-1);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -11,9 +11,10 @@ header {
 header button {
     border: 0;
     background-color: transparent;
-    font-size: 4.5vh;
+    font-size: 5.5vh;
     font-weight: bold;
     color: white;
+    letter-spacing: 1px;
 }
 
 header button:hover {
@@ -21,5 +22,5 @@ header button:hover {
 }
 
 header img {
-   height: 4.5vh;
+   height: 5.5vh;
 }

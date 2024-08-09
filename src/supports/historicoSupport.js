@@ -48,8 +48,10 @@ class historicoSupport {
 
         const expireds = client.data.slice(limit - client.data.length);
 
+        console.log(expireds)
+        
         expireds.forEach(async (report) => {
-            await historicoClient.deletarAntigo(report.id);
+            const response = await historicoClient.deletarAntigo(report.id);
         });
 
         return returnResponse(200, false, "Histórico configurado.");

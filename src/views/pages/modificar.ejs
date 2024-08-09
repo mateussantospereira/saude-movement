@@ -1,7 +1,7 @@
 <% if (body.table["status"]==200) { %>
 
     <div class="title">
-        <h2>Modificar <%- body.email %></h2>
+        <h2>MODIFICAR <%- body.email %></h2>
     </div>
     
     <%- include('../components/message', { value: "" }) %>
@@ -24,6 +24,11 @@
                     <button class="secondary">Modificar</button>
                 </div>
             </form>
+
+            <div class="end">
+                <%- include('../components/box-delete', { label: "Confirme a exclusão dousuário:" , button: "Deletar" ,
+                    route: `/registro/deletar/${registro.email}`, redirect: "/registros" }) %>
+            </div>
         </div>
     </div>
 

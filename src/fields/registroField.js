@@ -27,6 +27,31 @@ class registroField {
         };
     }
 
+    async importarAtualizacao() {
+        return {
+            kilobyte: 150,
+            fields: {
+                'E-MAIL': { nome: "E-mail", min: 12, max: 60, obg: ["@", "."], ndc: ["especiais"] },
+                'IDADE': { nome: "Senha", max: 5 },
+                'IMC': { nome: "Tipo", max: 5 },
+                'SAÚDE': { nome: "Saúde", max: 5 }
+            }
+        };
+    }
+
+    async exportar() {
+        return {
+            list: { list: { nome: "Lista de exportação", max: 3000, list: true } },
+            head: {
+                nome: ['NOME'],
+                email: ['E-MAIL'],
+                idade: ['IDADE'],
+                imc: ['IMC'],
+                saude: ['SAÚDE']
+            }
+        };
+    }
+
     async imprimir() {
         return {
             inputs: {
@@ -38,14 +63,28 @@ class registroField {
                 "width": "21cm",
                 "format": "Letter",
                 "orientation": "portrait"
-            }
+            },
+            head: {
+                data: "Data",
+                nome: "Nome",
+                email: "E-mail",
+                idade: "Idade",
+                imc: "IMC",
+                saude: "Saúde"
+            },
+            textList: `
+                <div class="text">
+                    <h3>Relátorio de colaboradores</h3>
+                    <p>Este é o relatório de saúde dos colaboradores da empresa.</p>
+                </div>
+            `
         }
     }
 
     async atualizar() {
         return {
-            imc: { nome: "IMC", min: 1, max: 4 },
-            saude: { nome: "Saúde", min: 1, max: 3 }
+            imc: { nome: "IMC", min: 1, max: 5 },
+            saude: { nome: "Saúde", min: 1, max: 5 }
         };
     }
 

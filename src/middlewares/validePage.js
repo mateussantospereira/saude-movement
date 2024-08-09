@@ -28,10 +28,6 @@ class validePage {
                 return expiration(req, res, next);
             }
         }
-
-        console.log(req.session.sess)
-
-        console.log("TESTE3")
     
         return res.redirect("/validar");
     };

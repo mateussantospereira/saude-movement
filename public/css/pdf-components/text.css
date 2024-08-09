@@ -1,0 +1,21 @@
+.text {
+    margin: 0;
+}
+
+.text h3 {
+    font-size: 17px;
+    margin: 0;
+}
+
+.text p {
+    margin: 0;
+}
+
+#date {
+    margin: 0;
+}
+
+#date p {
+    margin: 0;
+    margin-bottom: 10px;
+}

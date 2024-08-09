@@ -47,13 +47,20 @@ class viewController {
         renderizar(req, res, { body: 'registros-tipo', table: json });
     }
 
+    async importarRegistros(req, res) {
+        renderizar(req, res, { body: 'importar-registros' });
+    }
+
+    async importarLista(req, res) {
+        renderizar(req, res, { body: 'importar-lista' });
+    }
+
+
     async modificar(req, res) {
         const { email } = req.params;
         const json = await registroUtil(email);
         renderizar(req, res, { body: 'modificar', table: json });
     }
-
-    // ---------------------------------------------
 
     // ---------------------------------------------
 
@@ -75,7 +82,10 @@ class viewController {
         renderizar(req, res, { body: 'imprimir-lista', table: json });
     }
 
-    // ---------------------------------------------
+    async exportarLista(req, res) {
+        const json = await colaboradores();
+        renderizar(req, res, { body: 'exportar-lista', table: json });
+    }
     
     // ---------------------------------------------
 

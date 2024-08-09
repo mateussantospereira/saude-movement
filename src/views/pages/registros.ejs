@@ -1,10 +1,12 @@
 <div class="title">
-    <h2>Classe de Registros</h2>
+    <h2>CLASSE DE REGISTROS</h2>
 </div>
 
 <% if (body.table["status"]==200) { %>
 
-    <%- include('../components/search', { placeholder: "Procurar classe" }) %>
+    <div class="center">
+        <%- include('../components/search', { placeholder: "Procurar classe" }) %>
+    </div>
 
     <%- include('../components/tipos', { table: body.table }); %>
 

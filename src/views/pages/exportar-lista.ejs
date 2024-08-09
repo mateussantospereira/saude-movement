@@ -1,0 +1,60 @@
+<div class="title">
+    <h2>EXPORTAÇÃO DE RELATÓRIO</h2>
+</div>
+
+<% if (body.table["status"]==200) { %>
+
+    <div class="center">
+        <div class="flex">
+            <%- include('../components/search', { placeholder: "Procurar colaborador" }) %>
+    
+            
+            <button class="secondary" id="exportar">Exportar</button>
+            <%- include('../components/carregamento') %>   
+        </div>
+    </div>
+
+    <%- include('../components/colaboradores', { table: body.table, email: true, report: false }); %>
+
+<% } else { %>
+
+    <div>
+        <p id="message">
+            <%= body.table["message"] %>
+        </p>
+    </div>
+
+<% } %>
+
+<script>
+    const exportarButton = document.getElementById("exportar");
+
+    async function openFile(url) {
+        const response = fetch(url)
+            .then((chunk) => { return chunk.blob() })
+            .then(async (data) => {
+                let url = URL.createObjectURL(data);
+                await finishLoading(() => {
+                    window.open(url).print();
+                }, exportarButton);
+            });
+    }
+
+    async function exportar(list) {
+        const response = await fetchUrlencoded("/registro/exportar-lista", "POST", list, true);
+        
+        if (response.error == false) {
+            openFile(response.data);
+        } else {
+            await finishLoading(() => {
+                erro(response.message);
+            }, exportarButton);
+        };
+    };
+
+        exportarButton.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            enviarLista(exportar, exportarButton);
+        });
+</script>

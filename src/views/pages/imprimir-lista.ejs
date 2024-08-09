@@ -1,19 +1,20 @@
 <div class="title">
-    <h2>Impressão de Relatório</h2>
+    <h2>IMPRESSÃO DE RELATÓRIO</h2>
 </div>
 
 <% if (body.table["status"]==200) { %>
 
-    <div>
-        <%- include('../components/search', { placeholder: "Procurar colaborador" }) %>
-
-        <div class="center">
+    <div class="center">
+        <div class="flex">
+            <%- include('../components/search', { placeholder: "Procurar colaborador" }) %>
+    
             <button class="secondary" id="imprimir">Imprimir</button>
             <%- include('../components/carregamento') %>
         </div>
     </div>
+    
 
-    <%- include('../components/colaboradores', { table: body.table, email: true, report: true }); %>
+    <%- include('../components/colaboradores', { table: body.table, email: true, report: false }); %>
 
 <% } else { %>
 

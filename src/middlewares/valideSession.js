@@ -57,7 +57,6 @@ class valideSession {
             return await verificarToken(req, res, next, "rh");
         }
 
-        console.log("TESTE1")
         return validePage.rh(req, res, next);
     };
 

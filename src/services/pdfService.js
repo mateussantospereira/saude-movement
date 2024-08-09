@@ -1,60 +1,93 @@
 const pdf = require("html-pdf");
 const { url } = require("../config/urlCors")
 const returnResponse = require("../helpers/returnResponse");
+const historicoAssistence = require("../assistences/historicoAssistence");
 
 class pdfService {
-    async imprimir(data, options, fileName) {
-        const html = await this.gerarHTML(data);
+    async imprimir(data, options, head, text = "", fileName) {
+        const html = await this.gerarHTML(data, head, text);
 
         return await this.gerarPDF(html, options, fileName);
     }
 
-    async gerarHTML(data) {
+    async gerarHTML(data, head, text) {
         let lines = 5;
         let count = 0;
-        let tables = "";
-        let thead = `
-            <thead>
-                <th>Data</th>
-                <th>Nome</th>
-                <th>Idade</th>
-                <th>Imc</th>
-                <th>Saúde</th>
-            </thead>
+        let pages = "";
+        let thead = `<thead>`;
+        let date = await historicoAssistence.getDate();
+        date = date.day;
+        date = date.split("-");
+        date = `${date[2]}/${date[1]}/${date[0]}`;
+        let textDate = `
+            <div id="date">
+                <p>Data: ${date}<p>
+            </div>
         `;
 
+        Object.keys(head).forEach((i) => {
+            thead = thead + `<th>${head[i]}</th>`;
+        });
+
+        thead = thead + `</thead>`;
+
+        data = JSON.stringify(data);
+        data = JSON.parse(data);
+
         data.forEach((report) => {
-            if (count == 0 || count % lines == 0) {
-                tables = tables + `
-                    <div class="table">
-                        <table>
-                            ${thead}
-                            <tbody>
+            if (count == 0) {
+                pages = pages + `
+                    <div class="page">
+                        <div class="content">
+                            ${text}
+                            ${textDate}
+                            <table>
+                                ${thead}
+                                <tbody>
                 `;
             }
 
-            tables = tables + "<tr>";
+            if (count != 0 && count % lines == 0) {
+                pages = pages + `
+                    <div class="page">
+                        <div class="content">
+                            <table>
+                                ${thead}
+                                <tbody>
+                `;
+            }
 
-            Object.values(report).forEach((i) => {
-                tables = tables + `<td>${i}</td>`;
-            });
+            pages = pages + "<tr>";
 
-            tables = tables + "</tr>";
+            Object.keys(head).forEach((i) => {
+                if (i == "data") {
+                    let date = report[i].slice(0, 10).split("-");
+                    report[i] = `${date[2]}/${date[1]}/${date[0]}`;
+                }
+
+                if (report[i]) {
+                    pages = pages + `<td>${report[i]}</td>`;
+                }
+            })
+
+            pages = pages + "</tr>";
             count++;
 
             if (count % lines == 0) {
-                tables = tables + `
-                            <tbody>
-                        </table>
+                pages = pages + `
+                                <tbody>
+                            </table>
+                        </div>
                     </div>
                 `;
             }
         });
 
         if (count % lines != 0) {
-            tables = tables + `
-                        <tbody>
-                    </table>
+            pages = pages + `
+                            <tbody>
+                        </table>
+                    </div>
                 </div>
             `;
         }
@@ -69,7 +102,7 @@ class pdfService {
                     <title>Document</title>
                 </head>
                 <body>
-                    ${tables}
+                    ${pages}
                 </body>
             </html>
         `;

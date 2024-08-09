@@ -2,7 +2,7 @@ const executeQuery = require("../helpers/executeQuery");
 
 class historicoModel {
     async listar(email) {
-        const sql = "SELECT data, nome, idade, imc, saude FROM historico WHERE email = ? ORDER BY data DESC;";
+        const sql = "SELECT id, data, nome, idade, imc, saude FROM historico WHERE email = ? ORDER BY id DESC;";
         return await executeQuery(sql, email);
     }
 

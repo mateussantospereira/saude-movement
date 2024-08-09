@@ -1,14 +1,26 @@
 .bar {
     width: 19vw;
-    background-color: var(--color-main-3);
+    background-color: var(--gray-2);
+}
+
+.buttons a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none !important;
 }
 
 .buttons button {
-    width: 100%;
-    padding: 0.7vh 1vw;
-    border: solid 1px;
+    width: 90%;
+    height: var(--height-button);
+    padding: 0 1vw;
+    margin-top: 1.3vh;
+    border: 0;
+    background-color: var(--gray-1);
+    color: white;
+    font-weight: bold;
 }
 
 .buttons button:hover {
-    background-color: var(--color-main-1);
+    background-color: var(--green-1);
+    color: black;
 }

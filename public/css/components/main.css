@@ -2,11 +2,11 @@ body {
     margin: 0;
     height: 100vh;
     width: 100vw;
-    font-family: sans-serif, serif;
+    font-family: var(--font-family);
 }
 
 p, input, button {
-    font-size: 16px;
+    font-size: var(--font-size)
 }
 
 .center {
@@ -15,12 +15,17 @@ p, input, button {
     justify-content: center;
 }
 
+.flex {
+    display: flex;
+    align-items: center;
+}
+
 main {
-    height: 86vh;
+    height: var(--height-main);
 }
 
 .box-content {
-    height: 86vh;
+    height: var(--height-main);
     display: flex;
     justify-content: space-between;
 }

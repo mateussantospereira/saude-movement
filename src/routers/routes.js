@@ -14,15 +14,18 @@ const router = Router();
 router.get("/", viewController.inicio);
 router.get("/sair", viewController.sair);
 router.get("/validar", resolver(viewController.validar));
-router.get("/registrar", resolver(viewController.registrar));
-router.get("/registros", validePage.rh, resolver(viewController.registros));
-router.get("/registros/:tipo", resolver(viewController.registrosTipo));
-router.get("/modificar/:email", resolver(viewController.modificar));
+router.get("/registrar", validePage.adm, resolver(viewController.registrar));
+router.get("/registros", validePage.adm, resolver(viewController.registros));
+router.get("/registros/:tipo", validePage.adm, resolver(viewController.registrosTipo));
+router.get("/modificar/:email", validePage.adm, resolver(viewController.modificar));
 
 // Colaboradores
 router.get("/colaboradores", validePage.rh, resolver(viewController.colaboradores));
-router.get("/relatorio/:email", resolver(viewController.relatorio));
-router.get("/imprimir-lista", resolver(viewController.imprimirLista));
+router.get("/relatorio/:email", validePage.rh, resolver(viewController.relatorio));
+router.get("/imprimir-lista", validePage.rh, resolver(viewController.imprimirLista));
+router.get("/importar-registros", validePage.adm, resolver(viewController.importarRegistros));
+router.get("/importar-lista", validePage.adm, resolver(viewController.importarLista));
+router.get("/exportar-lista", validePage.rh, resolver(viewController.exportarLista));
 
 // Registro Controller
 
@@ -33,6 +36,8 @@ router.get("/registro/buscar/:email", registroController.buscar);
 router.post("/registro/validar", registroController.validar);
 router.post("/registro/criar", valideSession.adm, registroController.criar);
 router.post("/registro/importar", valideSession.adm, registroController.importar);
+router.post("/registro/importar-atualizacao", valideSession.adm, registroController.importarAtualizacao);
+router.post("/registro/exportar-lista", valideSession.rh, registroController.exportar);
 router.post("/registro/imprimir-relatorio/:email", valideSession.rh, rateLimiter, registroController.imprimirRelatorio);
 router.post("/registro/imprimir-lista", valideSession.rh, rateLimiter, registroController.imprimirLista);
 router.put("/registro/atualizar/:email", valideSession.adm, rateLimiter, registroController.atualizar);

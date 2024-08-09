@@ -36,10 +36,10 @@ class database {
                 email varchar(100) not null,
                 senha varchar(100) not null,
                 tipo varchar(25) not null,
-                idade varchar(100),
-                imc varchar(100),
-                saude varchar(100),
-                data date
+                idade varchar(100) default("Nulo"),
+                imc varchar(100) default("Nulo"),
+                saude varchar(100) default("Nulo"),
+                data date default("2024-07-11")
             );
         `;
 

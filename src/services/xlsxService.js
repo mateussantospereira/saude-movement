@@ -1,4 +1,6 @@
 const fs = require("fs");
+const xlsx = require("xlsx");
+const returnResponse = require("../helpers/returnResponse");
 
 class xlsxService {
     async createImportedFile(req, limit, fileName) {
@@ -35,6 +37,41 @@ class xlsxService {
                 });
             });
         });
+    }
+
+    async exportar(data, head, fileName) {
+        data = JSON.stringify(data);
+        data = JSON.parse(data);
+
+        try {
+            const keys = Object.keys(data[0]);
+
+            data.forEach((p) => {
+                keys.forEach((key) => {
+                    if (key == "data") {
+                        let date = p[key].slice(0, 10).split("-");
+                        p[key] = `${date[2]}/${date[1]}/${date[0]}`;
+                    }
+                    if (!head[key]) {
+                        delete p[key];
+                    } else {
+                        delete Object.assign(p, { [head[key]]: p[key] })[key];
+                    };
+                });
+            });
+
+            const worksheet = xlsx.utils.json_to_sheet(data);
+            const workbook = xlsx.utils.book_new();
+
+            xlsx.utils.book_append_sheet(workbook, worksheet, "Dados dos Colaboradores");
+            await xlsx.writeFile(workbook, `./public/xlsx/export/${fileName}.xlsx`);
+
+            const url = `/public/xlsx/export/${fileName}.xlsx`;
+
+            return returnResponse(201, false, "Arquivo XLSX criado com êxito.", url);
+        } catch (error) {
+            return returnResponse(400, true, "Erro ao tentar criar arquivo XLSX.")
+        }
     }
 }
 

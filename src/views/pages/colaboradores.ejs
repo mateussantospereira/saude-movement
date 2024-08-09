@@ -1,10 +1,12 @@
 <div class="title">
-    <h2>Colaboradores</h2>
+    <h2>COLABORADORES</h2>
 </div>
 
 <% if (body.table["status"]==200) { %>
 
-    <%- include('../components/search', { placeholder: "Procurar colaborador" }) %>
+    <div class="center">
+        <%- include('../components/search', { placeholder: "Procurar colaborador" }) %>
+    </div>
 
     <%- include('../components/colaboradores', { table: body.table, report: true, email: false }); %>
 

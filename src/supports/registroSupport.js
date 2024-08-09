@@ -6,6 +6,8 @@ const registroField = require("../fields/registroField");
 const { checkInputs } = require("../helpers/checkInputs");
 const bcrypt = require("bcryptjs");
 const historicoAssistence = require("../assistences/historicoAssistence");
+const historicoClient = require("../clients/historicoClient");
+const historicoSupport = require("./historicoSupport");
 
 class registroSupport {
     async validar(data) {
@@ -92,6 +94,43 @@ class registroSupport {
         return returnResponse(200, false, "Arquivo validado.", list);
     }
 
+    async valideUpdateXLSX(body, fields) {
+        let list = [];
+        let listaEmail = [];
+
+        for (let line of body) {
+            let resultInputs = checkInputs(line, fields);
+            let reqData = resultInputs.data;
+
+            if (resultInputs.error == true) {
+                return returnError(resultInputs.message);
+            }
+
+            if (listaEmail.includes(reqData['E-MAIL'])) {
+                return returnError("Erro. Este arquivo possuí E-mails repetidos.");
+            }
+
+            const client = await registroClient.comparar(reqData['E-MAIL']);
+
+            if (client.status != 200) {
+                return returnError("Erro. O arquivo possuí E-mails não existentes no banco de dados.");
+            }
+
+            listaEmail.push(reqData['E-MAIL']);
+
+            let newData = {
+                email: reqData['E-MAIL'],
+                idade: reqData['IDADE'],
+                imc: reqData['IMC'],
+                saude: reqData['SAÚDE'],
+            };
+
+            list.push(newData);
+        }
+
+        return returnResponse(200, false, "Arquivo validado.", list);
+    }
+
     async valideList(body, fields) {
         let list = [];
         let resultInputs = checkInputs(body, fields);
@@ -106,7 +145,7 @@ class registroSupport {
 
         async function verificar(data) {
             for (let email of data) {
-                const client = await registroClient.buscar(email);
+                const client = await registroClient.comparar(email);
                 if (client.status != 200) {
                     return returnResponse(400, true, "Erro. Alguns patrimônios não foram cadastrados.");
                 } else {
@@ -119,8 +158,8 @@ class registroSupport {
     }
 
     async lastUpdate(email) {
-        const date = await colaboradorAssistance.getDate();
-        const client = await colaboradorClient.buscar(email);
+        const date = await historicoAssistence.getDate();
+        const client = await registroClient.comparar(email);
 
         if (client.status != 200) {
             return returnResponse(400, true, client.message);
@@ -137,7 +176,7 @@ class registroSupport {
             }
         }
 
-        return returnResponse(200, true, "Nenhuma manutenção hoje.");
+        return returnResponse(200, true, "Nenhuma atualização hoje.", client.data);
     }
 
     async atualizar(email, body) {
@@ -158,12 +197,28 @@ class registroSupport {
         const date = await historicoAssistence.getDate();
         reqData.data = date.day;
 
-        return atualizar(reqData);
+        const response = await registroClient.atualizar(reqData, email);
 
-        async function atualizar(info) {
-            const response = await registroClient.atualizar(info, email);
-            return response;
-        };
+        if (response.status != 200) {
+            return returnResponse(400, true, response.message);
+        }
+
+        const report = Object.assign(support.data[0], reqData);
+        delete report.id;
+        delete report.tipo;
+        delete report.senha;
+
+        const client = await historicoClient.gravar(report);
+        
+        if (client.status != 201) {
+            return returnResponse(400, true, client.message);
+        }
+        
+        const config = await historicoSupport.deletarAntigo(email);
+
+        console.log(config)
+
+        return response;
     }
 }
 

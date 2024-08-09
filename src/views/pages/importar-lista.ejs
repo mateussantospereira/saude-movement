@@ -1,0 +1,40 @@
+<h2 class="title">IMPORTAÇÃO DE RELATÓRIO</h2>
+
+<%- include('../components/message', { value: "" }) %>
+
+<div class="center">
+    <p>Para saber mais sobre a importação de arquivos consulte as <a href="/uso">Condições de uso</a>.</p>
+</div>
+
+<div class="center">
+    <form id="form">
+        <input type="file" id="arquivo" accept=".xlsx" required>
+        <div class="center">
+            <button id="button" class="secondary">Importar</button>
+            <%- include('../components/carregamento') %>
+        </div>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById("form");
+    const carregando = document.getElementById("carregando");
+    const message = document.getElementById("message");
+
+    async function importar(file) {
+        const response = await fetch(`/registro/importar-atualizacao`, { method: "POST", body: file });
+        const json = await response.json();
+
+        await finishLoading(() => {
+            redirecionar(json, "/registros");
+        }, form.button);
+    }
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        iniciarCarregamento(form.button, carregando);
+
+        importar(form.arquivo.files[0]);
+    });
+</script>
