@@ -19,6 +19,13 @@ router.get("/registros", validePage.adm, resolver(viewController.registros));
 router.get("/registros/:tipo", validePage.adm, resolver(viewController.registrosTipo));
 router.get("/modificar/:email", validePage.adm, resolver(viewController.modificar));
 
+// Condições de uso
+router.get("/uso", resolver(viewController.uso));
+
+// ReadME.md
+
+router.get("/read", resolver(viewController.read));
+
 // Colaboradores
 router.get("/colaboradores", validePage.rh, resolver(viewController.colaboradores));
 router.get("/relatorio/:email", validePage.rh, resolver(viewController.relatorio));

@@ -25,6 +25,12 @@
     font-weight: bold;
 }
 
+@media (min-width: 900px) {
+    .buttons button {
+        min-height: var(--height-input) !important;
+    }
+}
+
 .buttons button:hover {
     background-color: var(--green-1);
     color: black;

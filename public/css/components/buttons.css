@@ -14,6 +14,14 @@ button {
     margin: 2vh 1vw;
 }
 
+@media (min-width: 900px) {
+    .primary,
+    .secondary,
+    .third {
+        min-height: var(--height-input) !important;
+    }
+}
+
 .primary {
     background-color: var(--gray-2);
     color: white;

@@ -3,6 +3,7 @@ const relatorioUtil = require("../utils/relatorioUtil");
 const registrosUtil = require("../utils/registrosUtil");
 const tiposUtil = require("../utils/tiposUtil");
 const registroUtil = require("../utils/registroUtil");
+const path = require("path");
 
 const renderizar = (req, res, body) => {
     body.interface = body.interface || "main";
@@ -96,6 +97,16 @@ class viewController {
     }
 
     // ---------------------------------------------
+
+    // Condições de uso
+
+    uso(req, res) {
+        renderizar(req, res, { body: 'uso' } );
+    }
+
+    read(req, res) {
+        res.sendFile(path.join(__dirname, "../../README.md"))
+    }
 }
 
 module.exports = new viewController();

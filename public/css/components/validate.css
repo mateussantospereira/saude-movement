@@ -62,3 +62,30 @@
 #footer-validate p {
     margin: 0;
 }
+
+@media (max-width: 600px) {
+    .form-validate {
+        padding: 5.5vh 2.2vw;
+        background-color: rgb(24, 24, 24);
+        color: #ffffff;
+        /* border-radius: 12px; */
+    }
+
+    #title-validate {
+        display: none;
+        margin-top: 3vh;
+        margin-bottom: 1.5vh;
+    }
+
+    .form-validate img {
+        width: 70vw;
+        margin-bottom: 5vh;
+    }
+
+    .form-validate input {
+        margin-top: 0.8vh;
+        margin-bottom: 3vh;
+        width: 75vw !important; 
+        /* border-radius: 5px; */
+    }
+}

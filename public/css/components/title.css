@@ -1,5 +1,8 @@
 .title {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .title h2 {
@@ -8,7 +11,7 @@
 }
 
 @media (max-width: 600px) {
-    .title {
-        max-width: 60vh;
+    .title h2 {
+        max-width: 60vw !important;
     }
 }

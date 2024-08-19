@@ -17,5 +17,6 @@ footer p {
 }
 
 footer a {
-    font-weight: 450;
+    font-weight: normal;
+    color: var(--green-1);
 }

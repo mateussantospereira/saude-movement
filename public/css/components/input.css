@@ -75,6 +75,6 @@ input[type="file"]::file-selector-button:hover {
     #tipo,
     #turmas,
     #inputs-turma {
-        width: 60vw !important;
+        width: 50vw !important;
     }
 }

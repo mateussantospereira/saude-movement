@@ -1,0 +1,9 @@
+#text {
+    width: 60vw;
+}
+
+@media (max-width: 600px){
+	#text {
+        width: 83vw;
+    }
+}

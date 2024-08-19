@@ -8,3 +8,9 @@
     margin: 2vh 0;
     font-size: 40vh !important;
 }
+
+@media (max-width: 600px) {
+    #error404 {
+        font-size: 28vh !important;
+    }
+}

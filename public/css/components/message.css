@@ -6,3 +6,14 @@
     background-color: rgba(255, 245, 158, 0.832);
     color: rgb(0, 0, 0);
 }
+
+@media (max-width: 600px) {
+    #message {
+        max-width: 80vw !important;
+    }
+}
+
+.info {
+    max-width: 75vw;
+    text-align: center;
+}

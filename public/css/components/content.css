@@ -4,7 +4,7 @@
     overflow: hidden;
     overflow-y: scroll;
     background-color: var(--background-color-content);
-    padding-top: 1vh;
+    padding: 0;
 }
 
 @media (max-width: 600px){
@@ -28,7 +28,6 @@
 .content-main {
     width: auto;
     height: auto;
-    padding: 2vh 2vw;
 }
 
 .content-margin {

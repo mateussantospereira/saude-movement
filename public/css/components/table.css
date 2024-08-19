@@ -59,6 +59,7 @@ td p {
     align-items: center;
     height: 25px;
     padding: 0 8px;
+    
 }
 
 td {
@@ -82,3 +83,20 @@ td button:hover {
     color: black;
     background-color: var(--green-1);
 }
+
+@media (max-width: 600px) {
+    td p {
+        max-width: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    th p {
+        max-width: 90px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+

@@ -23,8 +23,6 @@ label {
 }
 
 .submit {
-    margin-top: 0.5vh;
+    margin-top: 2vh;
     margin-bottom: 2vh;
-    display: flex;
-    justify-content: end;
 }

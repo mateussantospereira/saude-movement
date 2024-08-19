@@ -5,15 +5,19 @@
 <%- include('../components/message', { value: "" }) %>
 
 <div class="center">
-    <p>Para saber mais sobre a importação de arquivos consulte as <a href="/uso">Condições de uso</a>.</p>
+    <div class="info">
+        <p>Para saber mais sobre a importação de arquivos consulte as <a href="/uso">Condições de uso</a>.</p>
+    </div>
 </div>
 
 <div class="center">
     <form id="form">
-        <input type="file" id="arquivo" accept=".xlsx" required><br><br>
-        <div class="center">
-            <button id="button" class="secondary">Importar</button>
-            <%- include('../components/carregamento') %>
+        <input type="file" id="arquivo" accept=".xlsx" required>
+        <div class="submit">
+            <div class="center">
+                <button id="button" class="secondary">Importar</button>
+                <%- include('../components/carregamento') %>
+            </div>
         </div>
     </form>
 </div>
