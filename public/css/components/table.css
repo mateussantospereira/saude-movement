@@ -9,6 +9,12 @@
     background-color: var(--color-table);
 }
 
+@media (max-width: 600px){
+	.table {
+        max-width: 90vw;
+    }
+}
+
 .table::-webkit-scrollbar {
     width: 10px;
     background-color: var(--gray-2);

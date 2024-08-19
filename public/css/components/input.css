@@ -67,3 +67,14 @@ input[type="file"]::file-selector-button:hover {
     background-color: var(--green-1);
     -webkit-text-fill-color: black;
 }
+
+@media (max-width: 600px) {
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    #tipo,
+    #turmas,
+    #inputs-turma {
+        width: 60vw !important;
+    }
+}

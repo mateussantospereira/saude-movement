@@ -1,0 +1,31 @@
+<div id="menu" style="display: none;">
+    <button>☰</button>
+</div>
+
+<script>
+    const menu = document.getElementById("menu");
+    
+
+    menu.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const bar = document.getElementById("bar");
+        const th = document.getElementsByTagName("th");
+
+        
+
+        if (bar.style.display == "none") {
+            bar.style.display = "flex"
+
+            Object.values(th).forEach((i) => {
+                i.style.position = "static";
+            });
+        } else {
+            bar.style.display ="none";
+
+            Object.values(th).forEach((i) => {
+                i.style.position = "sticky";
+            });
+        }
+    });
+</script>

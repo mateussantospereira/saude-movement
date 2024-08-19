@@ -1,6 +1,11 @@
-.bar {
+#bar {
     width: 19vw;
+    height: 86vh;
     background-color: var(--gray-2);
+}
+
+.buttons {
+    width: 100%;
 }
 
 .buttons a {
@@ -23,4 +28,18 @@
 .buttons button:hover {
     background-color: var(--green-1);
     color: black;
+}
+
+@media (max-width: 600px){
+	#bar {
+        width: 100vw !important;
+        position: absolute !important;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.397);
+    }
+
+    .buttons {
+        width: 65%;
+        background-color: var(--gray-2);
+    }
 }

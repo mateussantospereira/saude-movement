@@ -6,3 +6,9 @@
     margin: 2vh 0;
     letter-spacing: 1px;
 }
+
+@media (max-width: 600px) {
+    .title {
+        max-width: 60vh;
+    }
+}
