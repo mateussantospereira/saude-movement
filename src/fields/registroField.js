@@ -11,7 +11,7 @@ class registroField {
             nome: { nome: "Nome", min: 10, max: 60, ndc: ["especiais", "numeros"] },
             email: { nome: "E-mail", min: 12, max: 60, obg: ["@", "."], ndc: ["especiais"] },
             senha: { nome: "Senha", min: 5, max: 20 },
-            tipo: { nome: "Tipo", min: 3, max: 25 }
+            tipo: { nome: "Tipo", min: 2, max: 25 }
         };
     }
 
@@ -22,7 +22,7 @@ class registroField {
                 'NOME': { nome: "Nome", min: 10, max: 60, ndc: ["especiais", "numeros"] },
                 'E-MAIL': { nome: "E-mail", min: 12, max: 60, obg: ["@", "."], ndc: ["especiais"] },
                 'SENHA': { nome: "Senha", min: 5, max: 20 },
-                'TIPO': { nome: "Tipo", min: 3, max: 25 }
+                'TIPO': { nome: "Tipo", min: 2, max: 25 }
             }
         };
     }

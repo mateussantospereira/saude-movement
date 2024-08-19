@@ -25,10 +25,14 @@
                 </div>
             </form>
 
-            <div class="end">
-                <%- include('../components/box-delete', { label: "Confirme a exclusão dousuário:" , button: "Deletar" ,
-                    route: `/registro/deletar/${registro.email}`, redirect: "/registros" }) %>
-            </div>
+            <% if (registro.tipo != "Adm") { %>
+            
+                <div class="end">
+                    <%- include('../components/box-delete', { label: "Confirme a exclusão do usuário:" , button: "Deletar" ,
+                        route: `/registro/deletar/${registro.email}`, redirect: "/registros" }) %>
+                </div>
+            
+            <% } %>
         </div>
     </div>
 

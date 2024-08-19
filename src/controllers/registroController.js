@@ -108,7 +108,7 @@ class registroController {
 
                 async function registrar(data) {
                     for (let line of data) {
-                        const registro = await registroSupport.atualizar(line);
+                        const registro = await registroClient.criar(line)
 
                         if (registro.status != 201) {
                             return deleteFile(res, fileName, 400, true, "Erro ao cadastrar lista de registros.");
@@ -330,6 +330,11 @@ class registroController {
             const client = await registroClient.atualizar(reqData, email);
             return res.status(client.status).json(client);
         };
+    }
+
+    async deletarTipo(req, res) {
+        const client = await registroClient.deletarTipo(tipo);
+        return res.status(client.status).json(client);
     }
 
     async deletar(req, res) {

@@ -96,6 +96,17 @@ class registroClient {
             });
     }
 
+    async deletarTipo(tipo) {        
+        const model = registroModel.deletarTipo(tipo);
+        return model
+            .then(() => {
+                return returnResponse(200, false, "Registros deletados com êxito.");
+            })
+            .catch(() => {
+                return returnResponse(400, true, "Erro interno.");
+            });
+    }
+
     async deletar(email) {        
         const model = registroModel.deletar(email);
         return model

@@ -36,7 +36,7 @@
     }
 
     async function imprimir(list) {
-        const response = await fetchUrlencoded(`/registro/imprimir-relatorio/pedro@gmail.com`, "POST", list);
+        const response = await fetchUrlencoded(`/registro/imprimir-relatorio/${email}`, "POST", list);
 
         if (response.error == false) {
             openFile(response.data);

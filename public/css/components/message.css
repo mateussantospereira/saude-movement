@@ -1,7 +1,7 @@
 #message {
-    margin: 0;
-    margin-bottom: 2vh;
-    border: 1px solid var(--gray-2);
+    width: 96%;
+    margin: 2vh 0;
+    border: 1px solid rgba(204, 191, 77, 0.832);
     padding: 1vh ;
     background-color: rgba(255, 245, 158, 0.832);
     color: rgb(0, 0, 0);

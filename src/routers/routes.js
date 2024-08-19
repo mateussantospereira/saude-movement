@@ -42,6 +42,7 @@ router.post("/registro/imprimir-relatorio/:email", valideSession.rh, rateLimiter
 router.post("/registro/imprimir-lista", valideSession.rh, rateLimiter, registroController.imprimirLista);
 router.put("/registro/atualizar/:email", valideSession.adm, rateLimiter, registroController.atualizar);
 router.put("/registro/modificar/:email", valideSession.adm, rateLimiter, registroController.modificar);
+router.delete("/registro/deletar-tipo/:tipo", valideSession.adm, rateLimiter, registroController.deletarTipo);
 router.delete("/registro/deletar/:email", valideSession.adm, rateLimiter, registroController.deletar);
 
 // Histórico Controller

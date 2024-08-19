@@ -56,12 +56,12 @@ class registroAssistence {
         let dataTipo = data.tipo.toLocaleLowerCase();
 
         if (dataTipo == adm) {
-            data.turma = "Adm";
+            data.tipo = "Adm";
             return data;
         }
 
         if (dataTipo == rh) {
-            data.turma = "RH";
+            data.tipo = "RH";
             return data;
         }
 

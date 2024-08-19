@@ -36,6 +36,11 @@ class RegistroModel {
         return await executeQuery(sql, [data, email]);
     }
 
+    async deletarTipo(tipo) {
+        const sql = "DELETE FROM registros WHERE tipo = ?";
+        return await executeQuery(sql, tipo);
+    }
+
     async deletar(email) {
         const sql = "DELETE FROM registros WHERE email = ?";
         return await executeQuery(sql, email);

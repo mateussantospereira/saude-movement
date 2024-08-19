@@ -73,6 +73,8 @@ class registroSupport {
 
             const client = await registroClient.comparar(reqData['E-MAIL']);
 
+            console.log(client)
+
             if (client.status == 200) {
                 return returnError("Erro. O arquivo possuí E-mails já existentes no banco de dados.");
             }
@@ -165,16 +167,22 @@ class registroSupport {
             return returnResponse(400, true, client.message);
         }
 
-        if (client.data[0].data != undefined) {
-            let data = client.data[0].data;
-            data = JSON.stringify(data);
-            data = JSON.parse(data);
-            data = data.slice(0, 10);
+        //----------------------------------
 
-            if (data == date.day) {
-                return returnResponse(400, true, "Informações já atualizadas hoje.");
-            }
-        }
+        // Limitação de 1 dia por atualização
+
+        // if (client.data[0].data != undefined) {
+        //     let data = client.data[0].data;
+        //     data = JSON.stringify(data);
+        //     data = JSON.parse(data);
+        //     data = data.slice(0, 10);
+
+        //     if (data == date.day) {
+        //         return returnResponse(400, true, "Informações já atualizadas hoje.");
+        //     }
+        // }
+
+        //----------------------------------
 
         return returnResponse(200, true, "Nenhuma atualização hoje.", client.data);
     }
@@ -215,8 +223,6 @@ class registroSupport {
         }
         
         const config = await historicoSupport.deletarAntigo(email);
-
-        console.log(config)
 
         return response;
     }

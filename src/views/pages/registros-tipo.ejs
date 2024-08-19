@@ -1,10 +1,21 @@
 <% if (body.table["status"]==200) { %>
 
+    <% tipo = body.table["data"][0]["tipo"] %>
+
     <div class="title">
-        <h2>CLASSE <%= body.table["data"][0]["tipo"]%></h2>
+        <h2>CLASSE <%= tipo %></h2>
     </div>
 
     <%- include('../components/registros', { table: body.table }); %>
+
+    <% if (tipo != "Adm") { %>
+            
+        <div class="center">
+            <%- include('../components/box-delete', { label: "Confirme a exclusão da classe:" , button: "Deletar" ,
+                route: `/registro/deletar-tipo/${tipo}`, redirect: "/registros" }) %>
+        </div>
+    
+    <% } %>
 
 <% } else { %>
 

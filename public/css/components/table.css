@@ -49,7 +49,10 @@ td {
 th p,
 td p {
     margin: 0 !important;
-    padding: 1vh 1.2vw;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    padding: 0 8px;
 }
 
 td {
