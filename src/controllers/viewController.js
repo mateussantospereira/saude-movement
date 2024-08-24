@@ -1,6 +1,7 @@
 const colaboradores = require("../utils/colaboradorUtil");
 const relatorioUtil = require("../utils/relatorioUtil");
 const registrosUtil = require("../utils/registrosUtil");
+const registrosListarUtil = require("../utils/registrosListarUtil");
 const tiposUtil = require("../utils/tiposUtil");
 const registroUtil = require("../utils/registroUtil");
 const path = require("path");
@@ -16,7 +17,13 @@ const renderizar = (req, res, body) => {
 }
 
 class viewController {
-    inicio(req, res) {
+    async inicio(req, res) {
+        const registros = await registrosListarUtil();
+        const json = await colaboradores();
+        renderizar(req, res, { body: 'inicio', table: json, registros: registros });
+    }
+
+    redirecionar(req, res) {
         res.redirect("/colaboradores");
     }
     
@@ -54,6 +61,10 @@ class viewController {
 
     async importarLista(req, res) {
         renderizar(req, res, { body: 'importar-lista' });
+    }
+
+    async importarHistorico(req, res) {
+        renderizar(req, res, { body: 'importar-historico' });
     }
 
 

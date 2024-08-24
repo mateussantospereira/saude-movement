@@ -10,8 +10,10 @@ const router = Router();
 
 // Páginas EJS
 
+router.get("/inicio", validePage.rh, resolver(viewController.inicio));
+
 // Usuário
-router.get("/", viewController.inicio);
+router.get("/", viewController.redirecionar);
 router.get("/sair", viewController.sair);
 router.get("/validar", resolver(viewController.validar));
 router.get("/registrar", validePage.adm, resolver(viewController.registrar));
@@ -32,6 +34,7 @@ router.get("/relatorio/:email", validePage.rh, resolver(viewController.relatorio
 router.get("/imprimir-lista", validePage.rh, resolver(viewController.imprimirLista));
 router.get("/importar-registros", validePage.adm, resolver(viewController.importarRegistros));
 router.get("/importar-lista", validePage.adm, resolver(viewController.importarLista));
+router.get("/importar-historico", validePage.adm, resolver(viewController.importarHistorico));
 router.get("/exportar-lista", validePage.rh, resolver(viewController.exportarLista));
 
 // Registro Controller
@@ -55,6 +58,7 @@ router.delete("/registro/deletar/:email", valideSession.adm, rateLimiter, regist
 // Histórico Controller
 
 router.get("/historico/listar/:email", historicoController.listar);
+router.post("/historico/importar", historicoController.importar);
 router.delete("/historico/deletar-antigo/:email", rateLimiter, historicoController.deletarAntigo);
 
 module.exports = router;

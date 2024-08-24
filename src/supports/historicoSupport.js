@@ -4,6 +4,8 @@ const registroSupport = require("../supports/registroSupport");
 const returnResponse = require("../helpers/returnResponse");
 const { checkInputs } = require("../helpers/checkInputs");
 const historicoAssistence = require("../assistences/historicoAssistence");
+const returnError = require("../helpers/returnError");
+const registroClient = require("../clients/registroClient");
 
 class historicoSupport {
     async gravar(body) {
@@ -33,6 +35,38 @@ class historicoSupport {
         return client;
     }
 
+    async valideXLSX(body, fields) {
+        let list = [];
+
+        for (let line of body) {
+            let resultInputs = checkInputs(line, fields);
+            let reqData = resultInputs.data;
+
+            if (resultInputs.error == true) {
+                return returnError(resultInputs.message);
+            }
+
+            const client = await registroClient.comparar(reqData['E-MAIL']);
+
+            if (client.status != 200) {
+                return returnError("Erro. O arquivo possuí E-mails não existentes no banco de dados.");
+            }
+
+            let newData = {
+                data: reqData['DATA'],
+                nome: client.data[0].nome,
+                email: reqData['E-MAIL'],
+                idade: reqData['IDADE'],
+                imc: reqData['IMC'],
+                saude: reqData['SAÚDE']
+            };
+
+            list.push(newData);
+        }
+
+        return returnResponse(200, false, "Arquivo validado.", list);
+    }
+
     async deletarAntigo(email) {
         const client = await historicoClient.listar(email);
 
@@ -48,8 +82,6 @@ class historicoSupport {
 
         const expireds = client.data.slice(limit - client.data.length);
 
-        console.log(expireds)
-        
         expireds.forEach(async (report) => {
             const response = await historicoClient.deletarAntigo(report.id);
         });

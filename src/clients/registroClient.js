@@ -53,7 +53,6 @@ class registroClient {
                 }
             })
             .catch((err) => {
-                console.log(err)
                 return returnResponse(400, true, "Erro interno.") });
     }
 
@@ -68,7 +67,6 @@ class registroClient {
                 }
             })
             .catch((err) => {
-                console.log(err);
                 return returnResponse(400, true, "Erro interno.");
             });
     }

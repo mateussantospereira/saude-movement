@@ -2,7 +2,7 @@ const executeQuery = require("../helpers/executeQuery");
 
 class historicoModel {
     async listar(email) {
-        const sql = "SELECT id, data, nome, idade, imc, saude FROM historico WHERE email = ? ORDER BY id DESC;";
+        const sql = "SELECT id, data, nome, idade, imc, saude FROM historico WHERE email = ? ORDER BY data DESC";
         return await executeQuery(sql, email);
     }
 
@@ -19,6 +19,11 @@ class historicoModel {
     async deletar(email) {
         const sql = "DELETE FROM historico WHERE email = ?";
         return await executeQuery(sql, email);
+    }
+
+    async truncar() {
+        const sql = "TRUNCATE TABLE historico";
+        return await executeQuery(sql);
     }
 }
 

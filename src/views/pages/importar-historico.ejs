@@ -1,0 +1,49 @@
+<div class="title">
+    <h2>IMPORTAÇÃO DE HISTÓRICO</h2>
+</div>
+
+<%- include('../components/message', { value: "" }) %>
+
+<div class="center">
+    <div class="info">
+        <p>Para saber mais sobre a importação de arquivos consulte as <a href="/uso">Condições de uso</a>.</p>
+    </div>
+</div>
+
+<div class="center">
+    <form id="form">
+        <input type="file" id="arquivo" accept=".xlsx" required>
+        
+        <div class="submit">
+            <div class="center">
+                <button id="button" class="secondary">Importar</button>
+                <%- include('../components/carregamento') %>
+            </div>
+        </div>
+        
+        
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById("form");
+    const carregando = document.getElementById("carregando");
+    const message = document.getElementById("message");
+
+    async function importar(file) {
+        const response = await fetch(`/historico/importar`, { method: "POST", body: file });
+        const json = await response.json();
+
+        await finishLoading(() => {
+            redirecionar(json, "/colaboradores");
+        }, form.button);
+    }
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        iniciarCarregamento(form.button, carregando);
+
+        importar(form.arquivo.files[0]);
+    });
+</script>

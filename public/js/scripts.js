@@ -27,7 +27,6 @@ async function fetchUrlencoded(route, method, body) {
     const response = await fetch(`${route}`, requestOptions);
     const json = await response.json();
 
-    console.log(json)
     return json;
 }
 

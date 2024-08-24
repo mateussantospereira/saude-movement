@@ -122,8 +122,7 @@ class registroController {
             try {
                 return await readFile();
             } catch (error) {
-                console.log(error)
-                return deleteFile(res, fileName, 
+                return deleteFile(res, fileName,
                     400, true, "Erro ao ler arquivo. Envie um arquivo XLSX válido.");
             }
         }
@@ -187,8 +186,6 @@ class registroController {
                         delete line.email;
                         const registro = await registroSupport.atualizar(email, line);
 
-                        console.log(line)
-                        console.log(registro)
                         if (registro.status != 200) {
                             return deleteFile(res, fileName, 400, true, registro.message);
                         }
@@ -201,8 +198,7 @@ class registroController {
             try {
                 return await readFile();
             } catch (error) {
-                console.log(error)
-                return deleteFile(res, fileName, 
+                return deleteFile(res, fileName,
                     400, true, "Erro ao ler arquivo. Envie um arquivo XLSX válido.");
             }
         }
@@ -333,14 +329,28 @@ class registroController {
     }
 
     async deletarTipo(req, res) {
+        const { tipo } = req.params;
         const client = await registroClient.deletarTipo(tipo);
+
+        if (tipo == "Colaborador") {
+            console.log("CHEGOU")
+            const historico = await historicoClient.truncar();
+            console.log(historico)
+        }
+
         return res.status(client.status).json(client);
     }
 
     async deletar(req, res) {
         const { email } = req.params;
         const client = await registroClient.deletar(email);
-        return res.status(client.status).json(client);
+
+        if (client.status != 200) {
+            return res.status(client.status).json(client);
+        }
+
+        const historico = await historicoClient.deletar(email);
+        return res.status(historico.status).json(historico);
     }
 }
 

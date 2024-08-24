@@ -15,7 +15,6 @@ class historicoClient {
                 }
             })
             .catch((err) => {
-                console.log(err)
                 return returnResponse(400, true, "Erro interno.")
             });
     }
@@ -26,7 +25,7 @@ class historicoClient {
             .then(() => {
                 return returnResponse(201, false, "Dados gravados no histórico com êxito.");
             })
-            .catch(() => {
+            .catch((error) => {
                 return returnResponse(400, true, "Erro interno.")
             });
     }
@@ -49,6 +48,17 @@ class historicoClient {
                 return returnResponse(201, false, `Histórico do colaborador ${ni} deletado com êxito.`);
             })
             .catch(() => {
+                return returnResponse(400, true, "Erro interno.")
+            });
+    }
+
+    async truncar() {
+        const model = historicoModel.truncar();
+        return model
+            .then(() => {
+                return returnResponse(201, false, `Tabela truncada com êxito.`);
+            })
+            .catch((error) => {
                 return returnResponse(400, true, "Erro interno.")
             });
     }

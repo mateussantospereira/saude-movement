@@ -9,8 +9,21 @@ class historicoField {
         };
     }
 
+    async importar() {
+        return {
+            kilobyte: 150,
+            fields: {
+                'DATA': { nome: "Data", max: 10, date: "formatar" },
+                'E-MAIL': { nome: "E-mail", min: 12, max: 60, obg: ["@", "."], ndc: ["especiais"] },
+                'IDADE': { nome: "Idade", max: 5 },
+                'IMC': { nome: "IMC", max: 5 },
+                'SAÚDE': { nome: "Saúde", max: 5 }
+            }
+        };
+    }
+
     async limitReport() {
-        return 6;
+        return 10;
     }
 }
 

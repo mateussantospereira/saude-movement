@@ -73,8 +73,6 @@ class registroSupport {
 
             const client = await registroClient.comparar(reqData['E-MAIL']);
 
-            console.log(client)
-
             if (client.status == 200) {
                 return returnError("Erro. O arquivo possuí E-mails já existentes no banco de dados.");
             }

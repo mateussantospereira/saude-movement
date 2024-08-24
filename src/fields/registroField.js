@@ -83,6 +83,7 @@ class registroField {
 
     async atualizar() {
         return {
+            idade: { nome: "Idade", min: 1, max: 5 },
             imc: { nome: "IMC", min: 1, max: 5 },
             saude: { nome: "Saúde", min: 1, max: 5 }
         };

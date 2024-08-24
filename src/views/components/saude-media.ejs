@@ -1,0 +1,33 @@
+<%
+    quant = 0;
+    total = 0;
+%>
+
+<% table.data.forEach((f) => {
+
+    if (Number(f.saude)) {
+        total = Number(total) + Number(f.saude);
+        quant = Number(quant) + 1;
+    }
+
+}) %>
+
+<%
+    result = Number(total) / Number(quant);
+    result = Number(result) - Number(result) % 1;
+%>
+
+<div class="cont-1">
+    <p>Média de saúde:</p>
+
+    <div class="center">
+        <div class="circle">
+            <div class="progress" style="--i:<%= result %>%; --clt:rgb(108, 177, 255);">
+                <h2><%= result %><small>%</small></h2>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
