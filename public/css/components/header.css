@@ -18,7 +18,7 @@ header {
 }
 
 #main-title button:hover {
-    color: rgb(174, 174, 174);
+    color: var(--green-2);
 }
 
 @media (max-width: 600px){

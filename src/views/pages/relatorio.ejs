@@ -1,17 +1,18 @@
-<div class="title">
-    <h2>RELATÓRIO DO COLOBORADOR</h2>
-</div>
-
 <% if (body.table["status"]==200) { %>
+
+    <%- include('../components/imc-graphic') %>
+
+    <%- include('../components/relatorio-imc-ia') %>
+
+    <div class="title">
+      <h2>RELATÓRIO DO COLOBORADOR</h2>
+    </div>
 
     <%- include('../components/colaborador', { table: body.table }); %>
 
-    <div class="center">
-        <button class="secondary" id="imprimir-button">
-            Imprimir relatório
-        </button>
-    </div>
+    <%- include('../components/imprimir-relatorio', { email: body.email }); %>
 
+    <br><br>
 <% } else { %>
 
     <script>
@@ -19,37 +20,3 @@
     </script>
 
 <% } %>
-
-<script>
-    const email = "<%- body.email %>";
-    const imprimirButton = document.getElementById("imprimir-button");
-
-    async function openFile(url) {
-        const response = fetch(url)
-            .then((chunk) => { return chunk.blob() })
-            .then(async (data) => {
-                let url = URL.createObjectURL(data);
-                await finishLoading(() => {
-                    window.open(url).print();
-                }, imprimirButton);
-            });
-    }
-
-    async function imprimir(list) {
-        const response = await fetchUrlencoded(`/registro/imprimir-relatorio/${email}`, "POST", list);
-
-        if (response.error == false) {
-            openFile(response.data);
-        } else {
-            await finishLoading(() => {
-                erro(response.message);
-            }, imprimirButton);
-        };
-    };
-
-    imprimirButton.addEventListener("click", async (event) => {
-        event.preventDefault();
-
-        imprimir({email: email})
-    });
-</script>

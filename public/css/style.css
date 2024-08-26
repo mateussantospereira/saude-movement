@@ -20,3 +20,8 @@
 @import "./components/footer.css";
 @import "./components/inicio.css";
 @import "./components/progress-circle.css";
+@import "./components/graphics.css";
+
+.fsed {
+    color: #be1717;
+}

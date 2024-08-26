@@ -32,8 +32,8 @@
 }
 
 .buttons button:hover {
-    background-color: var(--green-1);
-    color: black;
+    background-color: var(--green-2);
+    
 }
 
 @media (max-width: 600px){

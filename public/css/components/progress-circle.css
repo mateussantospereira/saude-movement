@@ -1,10 +1,18 @@
 .circle {
+    margin-top: 2vh;
     position: relative;
     width: 22vh;
     height: 22vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(148, 148, 148);
+    border: solid 2px rgb(43, 43, 43);
+    border-radius: 50%;
+}
+
+.circle:hover {
+    background-color: white;
 }
 
 .circle .progress {
@@ -12,11 +20,12 @@
     width: 18vh;
     height: 18vh;
     background: conic-gradient(from 0deg, var(--clt) 0%,
-    var(--clt) 0% var(--i), rgb(73, 73, 73) var(--i), rgb(73, 73, 73) 100%);
+    var(--clt) 0% var(--i), rgb(8, 8, 8) var(--i), rgb(140, 140, 140) 100%);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: solid 2px rgb(24, 24, 24);
 }
 
 .circle .progress::before {
@@ -25,6 +34,7 @@
     inset: 8px;
     background-color: black;
     border-radius: 50%;
+    border: solid 2px rgb(23, 23, 23);
 }
 
 .circle .progress h2 {

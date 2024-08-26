@@ -6,7 +6,7 @@
     overflow-y: scroll;
     display: flex;
     justify-content: space-evenly;
-    background-color: var(--color-table);
+    background-color: rgb(87, 87, 87);
 }
 
 @media (max-width: 600px){
@@ -24,27 +24,28 @@
     height: 4px;
     border-radius: 0px;
     width: 3px;
-    background-color: rgb(51, 51, 51);
+    background-color: #333333;
 }
 
 .table table {
-    border: 1px solid var(--color-table);
+    border: 2px solid black;
     padding: 0 !important;
     text-indent: initial;
-    border-spacing: 1px !important;
+    /* border-spacing: 1px !important; */
     height: 100%;
 }
 
 th,
 td {
-    border: 1px solid var(--color-table);
+    border: 2px solid rgb(68, 68, 68);
 }
 
 th {
     top: 0%;
     position: sticky;
     text-align: start;
-    background-color: var(--green-1);
+    background-color: var(--green-3);
+    color: white;
 }
 
 th,
@@ -58,7 +59,7 @@ td p {
     display: flex;
     align-items: center;
     height: 25px;
-    padding: 0 8px;
+    padding: 0.7vh 1vw;
     
 }
 

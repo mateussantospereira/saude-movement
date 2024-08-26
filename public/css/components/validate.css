@@ -45,6 +45,7 @@
 }
 .form-validate button {
     margin-top: 3vh;
+    border: 0 !important;
 }
 
 #footer-validate {

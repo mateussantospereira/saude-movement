@@ -1,0 +1,7 @@
+#graphic-imc {
+    max-width: 70vw !important;
+    max-height: 72vh;
+    border: 7px rgb(57, 57, 57) solid;
+    background-color: rgb(220, 220, 220);
+    margin-bottom: 2vh;
+}

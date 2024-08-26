@@ -1,3 +1,14 @@
+.inicio {
+  height: 98% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conteiner-1 {
+  min-width: 80vw ;
+}
+
 .box-1 {
   display: flex;
     flex-wrap: wrap;
@@ -7,19 +18,39 @@
 
 .cont-1 {
   padding: 2vh 2vw;
+  background-color: var(--gray-2);
+  border: solid 2px rgb(43, 43, 43);
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.cont-1 p {
+.cont-2 {
+  padding: 2vh 2vw;
+  background-color: var(--gray-2);
+  border: solid 2px rgb(43, 43, 43);
+  min-width: 15.5vw;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cont-1 p, .cont-2 p {
   margin: 0;
 }
 
 .button-1 {
-  margin: 1vh;
-  padding: 2vh;
-  border-radius: 10px;
-  min-width: 16vw;
+  border-radius: 5px;
+  margin: 1.5vh 0;
+  padding: 1.7vh;
+  min-width: 18.5vw;
   border: 0;
-  background-color: rgb(255, 255, 255);
+  color: white;
+  background-color: var(--gray-1);
 }
 
 .button-1 img {
@@ -28,5 +59,6 @@
 }
 
 .button-1:hover {
-  background-color: rgb(208, 208, 208);
+  background-color: var(--green-2);
+  border-color: var(--green-4);
 }

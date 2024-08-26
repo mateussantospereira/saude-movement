@@ -1,78 +1,81 @@
-<div class="title">
-    <h2>INÍCIO</h2>
-</div>
+
 
 <% if (body.table["status"]==200) { %>
 
-    <div class="box-1">
-        <div class="cont-1">
-            <a href="/colaboradores">
-                <button class="button-1">
-                    <div class="space-between">
-                        <img src="/public/icones/user-group.svg" alt="">
-                        <div>
-                            <b><%= body.table.data.length %></b>
-                             <br>
-                            <small>Colaboradores</small>
-                        </div>
-                    </div>        
-                </button>
-            </a>
+    <div class="inicio">
+        <div class="conteiner-1">
+            <div class="box-1">
+                <div class="cont-1">
+                    <div>
+                        <a href="/colaboradores">
+                            <button class="button-1">
+                                <div class="space-between">
+                                    <img src="/public/icones/user-group.svg" type=""></img>
+                                    <div>
+                                        <b><%= body.table.data.length %></b>
+                                         <br>
+                                        <small>Colaboradores</small>
+                                    </div>
+                                </div>        
+                            </button>
+                        </a>
+                        
+                        <br>
             
-            <br>
-
-            <a href="imprimir-lista">
-                <button class="button-1">
-                    <div class="space-between">
-                        <img src="/public/icones/print.svg" alt="">
-                        <div>
-                            Imprimir
-                             <br>
-                            <small>Relatórios</small>
-                        </div>
+                        <a href="imprimir-lista">
+                            <button class="button-1">
+                                <div class="space-between">
+                                    <img src="/public/icones/print.svg" type=""></img>
+                                    <div>
+                                        Imprimir
+                                         <br>
+                                        <small>Relatórios</small>
+                                    </div>
+                                </div>
+                            </button>
+                        </a>
                     </div>
-                </button>
-            </a>
-        </div>
-
-        <div class="cont-1">
-            <a href="/registros">
-                <button class="button-1">
-                    <div class="space-between">
-                        <img src="/public/icones/user-settings.svg" alt="">
-                        <div>
-                            <b><%= body.registros.data.length %></b>
-                             <br>
-                            <small>Registros</small>
-                        </div>
-                    </div>
-                </button>
-            </a>
+                </div>
+        
+                <div class="cont-1">
+                    <div>
+                        <a href="/registros">
+                            <button class="button-1">
+                                <div class="space-between">
+                                    <img src="/public/icones/user-settings.svg" type=""></img>
+                                    <div>
+                                        <b><%= body.registros.data.length %></b>
+                                         <br>
+                                        <small>Registros</small>
+                                    </div>
+                                </div>
+                            </button>
+                        </a>
+                        
+                        <br>
             
-            <br>
-
-            <a href="/importar-registros">
-                <button class="button-1">
-                    <div class="space-between">
-                        <img src="/public/icones/import.svg" alt="">
-                        <div>
-                            Importar
-                             <br>
-                            <small>Registros</small>
-                        </div>
+                        <a href="/importar-registros">
+                            <button class="button-1">
+                                <div class="space-between">
+                                    <img src="/public/icones/import.svg" type=""></img>
+                                    <div>
+                                        Importar
+                                         <br>
+                                        <small>Registros</small>
+                                    </div>
+                                </div>
+                            </button>
+                        </a>
                     </div>
-                </button>
-            </a>
+                </div>
+            
+                <%- include("../components/saude-media", { table: body.table }) %>
+            </div>
+        
+            <%- include("../components/imc-media", { table: body.table }) %>
         </div>
-    
-        <%- include("../components/saude-media", { table: body.table }) %>
     </div>
 
-    
-
-    <%- include("../components/imc-media", { table: body.table }) %>
-
-    <br>
 <% } else { %>
 
     <div class="center">

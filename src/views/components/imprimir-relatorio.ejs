@@ -1,0 +1,44 @@
+<div class="center">
+    <button class="secondary" id="imprimir-button">
+        Imprimir relatório
+    </button>
+
+    <%- include('./carregamento') %> 
+</div>
+
+<script>
+    const email = "<%- email %>";
+    const imprimirButton = document.getElementById("imprimir-button");
+    const carregando = document.getElementById("carregando");
+
+    async function openFile(url) {
+        const response = fetch(url)
+            .then((chunk) => { return chunk.blob() })
+            .then(async (data) => {
+                let url = URL.createObjectURL(data);
+                await finishLoading(() => {
+                    window.open(url).print();
+                }, imprimirButton);
+            });
+    }
+
+    async function imprimir(list) {
+        const response = await fetchUrlencoded(`/registro/imprimir-relatorio/${email}`, "POST", list);
+
+        if (response.error == false) {
+            openFile(response.data);
+        } else {
+            await finishLoading(() => {
+                erro(response.message);
+            }, imprimirButton);
+        };
+    };
+
+    imprimirButton.addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        iniciarCarregamento(imprimirButton, carregando);
+
+        imprimir({email: email})
+    });
+</script>
