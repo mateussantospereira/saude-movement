@@ -193,6 +193,7 @@ class registroSupport {
         }
 
         const fields = await registroField.atualizar();
+
         let resultInputs = checkInputs(body, fields);
         let reqData = resultInputs.data;
 

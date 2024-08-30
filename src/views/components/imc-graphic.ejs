@@ -6,7 +6,7 @@
     <div class="center">
         <canvas id="graphic-imc"></canvas>
     </div>
-    
+
 </div>
 
 
@@ -44,30 +44,31 @@
         new Chart(ctx, {
             type: 'line', // also try bar or other graph types
 
-	// The data for our dataset
-	data: {
-		labels: data.data,
-		// Information about the dataset
-    datasets: [{
-			label: "IMC",
-			backgroundColor: 'red',
-			borderColor: '#be1717',
-			data: data.imc,
-		}]
-	},
+            // The data for our dataset
+            data: {
+                labels: data.data,
+                // Information about the dataset
+                datasets: [{
+                    label: "IMC",
+                    backgroundColor: 'red',
+                    borderColor: '#be1717',
+                    data: data.imc,
+                }]
+            },
 
-	// Configuration options
-	options: {
-    layout: {
-      padding: 10,
-    },
-		legend: {
-			position: 'bottom',
-		},
-		title: {
-			display: true,
-			text: 'Precipitation in Toronto'
-		}}
+            // Configuration options
+            options: {
+                layout: {
+                    padding: 10,
+                },
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Precipitation in Toronto'
+                }
+            }
         });
     }
 

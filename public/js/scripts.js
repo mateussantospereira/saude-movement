@@ -127,6 +127,20 @@ function listarEmails() {
     return list;
 }
 
+function listarIMC() {
+    let table = document.getElementsByTagName("tbody")[0];
+    let imc = [];
+    const linhas = table.getElementsByTagName("tr");
+
+    Object.values(linhas).forEach((linha) => {
+        if (Number(linha.children[3].innerText)) {
+            imc.push(linha.children[3].innerText);
+        };
+    });
+
+    return imc;
+}
+
 function listarDataEIMC() {
     let table = document.getElementsByTagName("tbody")[0];
     let data = {

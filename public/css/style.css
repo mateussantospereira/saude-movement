@@ -16,12 +16,8 @@
 @import "./components/table.css";
 @import "./components/validate.css";
 @import "./components/loading.css";
-@import "./components/uso.css";
 @import "./components/footer.css";
 @import "./components/inicio.css";
 @import "./components/progress-circle.css";
 @import "./components/graphics.css";
-
-.fsed {
-    color: #be1717;
-}
+@import "./components/text.css";

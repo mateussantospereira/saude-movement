@@ -182,7 +182,6 @@ class registroController {
                 async function registrar(data) {
                     for (let line of data) {
                         let email = line.email;
-                        delete line.idade;
                         delete line.email;
                         const registro = await registroSupport.atualizar(email, line);
 

@@ -6,7 +6,6 @@ const validePage = require("../middlewares/validePage");
 const valideSession = require("../middlewares/valideSession");
 const { resolver } = require("../middlewares/error");
 const historicoController = require("../controllers/historicoController");
-const gptController = require("../controllers/gptController");
 const router = Router();
 
 // Páginas EJS
@@ -61,9 +60,5 @@ router.delete("/registro/deletar/:email", valideSession.adm, rateLimiter, regist
 router.get("/historico/listar/:email", historicoController.listar);
 router.post("/historico/importar", historicoController.importar);
 router.delete("/historico/deletar-antigo/:email", rateLimiter, historicoController.deletarAntigo);
-
-// Chat GPT
-
-router.post("/gpt/query", valideSession.rh, rateLimiter, gptController.query);
 
 module.exports = router;

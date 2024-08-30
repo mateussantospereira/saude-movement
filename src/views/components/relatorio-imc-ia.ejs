@@ -3,17 +3,24 @@
 </div>
 
 <div class="center">
-    <div id="text">
-        <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, voluptate. Omnis, corrupti. Odio accusantium consectetur temporibus, rem officia itaque. Voluptatem cum tempora cumque sint deleniti laborum autem, maxime assumenda! Quam.</p> -->
-        
-        <div class="center">
-            <%- include('./carregamento') %>
-        </div>
+    <div id="textIMC">
+        <p>IMC</p>
     </div>
 </div>
 
-<script>
-    const carregando = document.getElementById("carregando");
+<script src="/public/js/libraries/imc-analysis.js" defer></script>
 
-    carregando.style.display = "block";
+<script>
+    const text = document.getElementById("textIMC");
+
+    async function getIMCData() {
+        let data = await listarIMC();
+
+        const textIMC = await analyze(data[0]);
+
+        text.innerHTML = textIMC;
+    }
+
+    setTimeout((func) => { getIMCData() }, 10)
 </script>
+

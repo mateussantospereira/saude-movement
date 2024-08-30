@@ -1,0 +1,18 @@
+#textIMC {
+    width: 60vw;
+    background-color: white;
+
+    padding: 0 1vw;
+    border: 7px rgb(57, 57, 57) solid;
+    margin-bottom: 2vh;
+}
+
+#textUso {
+    width: 60vw;
+}
+
+@media (max-width: 600px){
+	#textUso {
+        width: 83vw;
+    }
+}

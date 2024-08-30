@@ -31,9 +31,9 @@ class registroField {
         return {
             kilobyte: 150,
             fields: {
-                'E-MAIL': { nome: "E-mail", min: 12, max: 60, obg: ["@", "."], ndc: ["especiais"] },
-                'IDADE': { nome: "Senha", max: 5 },
-                'IMC': { nome: "Tipo", max: 5 },
+                'E-MAIL': { nome: "E-mail", min: 12, max: 60 },
+                'IDADE': { nome: "Idade", max: 5 },
+                'IMC': { nome: "IMC", max: 5 },
                 'SAÚDE': { nome: "Saúde", max: 5 }
             }
         };
