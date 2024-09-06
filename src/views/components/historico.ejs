@@ -1,0 +1,16 @@
+<div class="center">
+    <div>
+        <% head = {
+            data: "Data",
+            idade: "Idade",
+            imc: "IMC",
+            saude: "Saúde"
+        } %>
+
+        <%- include('./cards', {
+            head: head,
+
+            table: table["data"]
+        }) %>
+    </div>
+</div>

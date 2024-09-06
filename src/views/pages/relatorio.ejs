@@ -1,11 +1,25 @@
 <% if (body.table["status"]==200) { %>
 
+    <% if (body.userType == "colaborador") { %> 
+        <%- include('../components/saudacao') %>
+    <% } else { %>
+        <div class="title">
+            <h2>Colaborador <%= body.table.data[0].nome %></h2>
+        </div>
+    <% } %>
+
     <%- include('../components/imc-graphic') %>
 
     <%- include('../components/relatorio-imc-ia') %>
 
     <div class="title">
-      <h2>RELATÓRIO DO COLOBORADOR</h2>
+        <h2>EXAMES DO COLOBORADOR</h2>
+    </div>
+
+    <%- include('../components/historico', { table: body.table }); %>
+
+    <div class="title">
+        <h2>RELATÓRIO DO COLOBORADOR</h2>
     </div>
 
     <%- include('../components/colaborador', { table: body.table }); %>

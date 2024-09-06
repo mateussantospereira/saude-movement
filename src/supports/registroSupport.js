@@ -83,8 +83,11 @@ class registroSupport {
                 nome: reqData['NOME'],
                 email: reqData['E-MAIL'],
                 senha: reqData['SENHA'],
-                tipo: reqData['TIPO']
+                tipo: reqData['TIPO'],
+                setor: reqData['SETOR']
             };
+
+            newData.senha = await registroAssistence.createPassword(newData.senha);
 
             newData = await registroAssistence.formatClass(newData);
 
@@ -213,6 +216,7 @@ class registroSupport {
         const report = Object.assign(support.data[0], reqData);
         delete report.id;
         delete report.tipo;
+        delete report.setor;
         delete report.senha;
 
         const client = await historicoClient.gravar(report);

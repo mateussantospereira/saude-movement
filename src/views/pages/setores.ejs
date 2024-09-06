@@ -1,0 +1,50 @@
+<% if (body.setores["status"]==200) { %>
+
+    <div class="title">
+        <h2>SETORES DA EMPRESA</h2>
+    </div>
+
+    <% setores = body.setores["data"] %>
+
+    <div class="center">
+        <p style="margin-top: 5px;"><b>Relatórios de saúde por setor:</b></p>
+    </div>
+
+    <div class="center">
+        <div class="setores-buttons">
+
+            <% setores.forEach((s) => { %>
+
+                <% if (s['setor'] != "Adm" && s['setor'] != "RH") {%>
+    
+                    <a href="/relatorio-setor/<%= s['setor'] %>">
+                        <button class="setor-button">
+                            <div class="space-between">
+                                <div>
+                                    <%= s['setor'] %>
+                                </div>
+                                <div>
+                                    <b><%= s['count(*)'] %></b>
+                                    <br>
+                                    <small>Colaboradores</small>
+                                </div>
+                            </div>        
+                        </button>
+                    </a>
+
+                <% } %>
+    
+            <% }) %>
+            
+        </div>
+    </div>
+
+<% } else { %>
+
+    <div class="center">
+        <p id="message">
+            <%= body.table["message"] %>
+        </p>
+    </div>
+
+<% } %>

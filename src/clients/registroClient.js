@@ -12,7 +12,9 @@ class registroClient {
                     return returnResponse(202, false, "Nenhum registro existente.");
                 }
             })
-            .catch(() => { return returnResponse(400, true, "Erro interno.") });
+            .catch((error) => {
+                console.log(error);
+                return returnResponse(400, true, "Erro interno.") });
     }
 
     async listarPorTipo(tipo) {
@@ -25,7 +27,24 @@ class registroClient {
                     return returnResponse(202, false, "Nenhum registro existente.");
                 }
             })
-            .catch(() => { return returnResponse(400, true, "Erro interno.") });
+            .catch((error) => {
+                console.log(error);
+                return returnResponse(400, true, "Erro interno.") });
+    }
+
+    async listarPorSetor(setor) {
+        const model = registroModel.listarPorSetor(setor);
+        return model
+            .then((registros) => {
+                if (registros[0]) {
+                    return returnResponse(200, false, "Registros listados com êxito.", registros);
+                } else {
+                    return returnResponse(202, false, "Nenhum registro existente.");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                return returnResponse(400, true, "Erro interno.") });
     }
     
     async listarTipos() {
@@ -38,9 +57,27 @@ class registroClient {
                     return returnResponse(202, false, "Nenhum registro existente.");
                 }
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.") });
     }
+
+    async listarSetores() {
+        const model = registroModel.listarSetores();
+        return model
+            .then((registros) => {
+                if (registros[0]) {
+                    return returnResponse(200, false, "Setores listados com êxito.", registros);
+                } else {
+                    return returnResponse(202, false, "Nenhum setor existente.");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                return returnResponse(400, true, "Erro interno.") });
+    }
+
+    
 
     async buscar(email) {
         const model = registroModel.buscar(email);
@@ -52,7 +89,8 @@ class registroClient {
                     return returnResponse(404, true, "Registro inexistente.");
                 }
             })
-            .catch((err) => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.") });
     }
 
@@ -66,7 +104,8 @@ class registroClient {
                     return returnResponse(404, true, "Registro inexistente.");
                 }
             })
-            .catch((err) => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.");
             });
     }
@@ -77,7 +116,8 @@ class registroClient {
             .then(() => {
                 return returnResponse(201, false, "Agente registrado com sucesso.");
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.");
             });
     }
@@ -89,7 +129,8 @@ class registroClient {
             .then(() => {
                 return returnResponse(200, false, "Registro atualizado com êxito.");
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.");
             });
     }
@@ -100,7 +141,8 @@ class registroClient {
             .then(() => {
                 return returnResponse(200, false, "Registros deletados com êxito.");
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.");
             });
     }
@@ -111,7 +153,8 @@ class registroClient {
             .then(() => {
                 return returnResponse(200, false, "Registro deletado com êxito.");
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.");
             });
     }

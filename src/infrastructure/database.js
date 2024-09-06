@@ -36,6 +36,7 @@ class database {
                 email varchar(100) not null,
                 senha varchar(100) not null,
                 tipo varchar(25) not null,
+                setor varchar(25) not null,
                 idade varchar(100) default("Nulo"),
                 imc varchar(100) default("Nulo"),
                 saude varchar(100) default("Nulo"),

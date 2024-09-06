@@ -10,11 +10,21 @@ class RegistroModel {
         const sql = "SELECT * FROM registros WHERE tipo = ?";
         return await executeQuery(sql, tipo);
     }
+    async listarPorSetor(setor) {
+        const sql = "SELECT * FROM registros WHERE setor = ?";
+        return await executeQuery(sql, setor);
+    }
 
     async listarTipos() {
         const sql = "SELECT tipo, count(*) FROM registros GROUP BY tipo;";
         return await executeQuery(sql);
     }
+
+    async listarSetores() {
+        const sql = "SELECT setor, count(*) FROM registros GROUP BY setor;";
+        return await executeQuery(sql);
+    }
+
 
     async buscar(email) {
         const sql = "SELECT nome, tipo, email FROM registros WHERE email = ?";

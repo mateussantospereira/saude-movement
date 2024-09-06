@@ -1,15 +1,26 @@
 <div id="bar">
     <div class="buttons">
         <a href="/inicio"><button>Início</button></a>
-        <a href="/colaboradores"><button>Colaboradores</button></a>
-        <a href="/imprimir-lista"><button>Imprimir relatório</button></a>
-        <a href="/importar-lista"><button>Importar relatório</button></a>
-        <a href="/importar-historico"><button>Importar histórico</button></a>
-        <a href="/exportar-lista"><button>Exportar relatório</button></a>
-        <a href="/registros"><button>Registros</button></a>
-        <a href="/registrar"><button>Registrar Usuário</button></a>
-        <a href="/importar-registros"><button>Importar registros</button></a>
-        <!-- <a href="/colaboradores"><button>Deletar dados</button></a> -->
+
+        <% if (userType != "colaborador") { %>
+
+            <a href="/setores"><button>Setores</button></a>
+
+        <% } %>
+
+        <% if (userType == "adm") { %>
+
+            <a href="/colaboradores"><button>Colaboradores</button></a>
+            <a href="/imprimir-lista"><button>Imprimir relatório</button></a>
+            <a href="/importar-lista"><button>Importar relatório</button></a>
+            <a href="/importar-historico"><button>Importar histórico</button></a>
+            <a href="/exportar-lista"><button>Exportar relatório</button></a>
+            <a href="/registros"><button>Registros</button></a>
+            <a href="/registrar"><button>Registrar Usuário</button></a>
+            <a href="/importar-registros"><button>Importar registros</button></a>
+            
+        <% } %>
+        
         <a href="/sair"><button>Terminar sessão</button></a>
     </div>
 </div>

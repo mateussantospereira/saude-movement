@@ -1,8 +1,10 @@
 <% if (head) { table.forEach((e)=> { %>
     <% Object.keys(e).forEach((key) => {
         if (!Object.keys(head).includes(key)) {
-        if (e[key]) { delete e[key]; }
-         }
+            if (e[key]) {
+                delete e[key];
+            }
+        }
     }) %>
 <% }) %>
 

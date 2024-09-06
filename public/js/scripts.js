@@ -134,7 +134,11 @@ function listarIMC() {
 
     Object.values(linhas).forEach((linha) => {
         if (Number(linha.children[3].innerText)) {
-            imc.push(linha.children[3].innerText);
+            let text = linha.children[3].innerText;
+            if (text.includes("\n")) {
+                text = text.split("\n")[1].trim();
+            }
+            imc.push(text);
         };
     });
 
@@ -144,19 +148,31 @@ function listarIMC() {
 function listarDataEIMC() {
     let table = document.getElementsByTagName("tbody")[0];
     let data = {
-        data: [],
+        date: [],
         imc: []
     };
     const linhas = table.getElementsByTagName("tr");
 
     Object.values(linhas).forEach((linha) => {
         if (Number(linha.children[3].innerText)) {
-            data.data.push(linha.children[0].innerText);
-            data.imc.push(linha.children[3].innerText);
+            let date = linha.children[0].innerText;
+            let imc = linha.children[3].innerText;
+
+            if (date.includes("\n")) {
+                date = date.split("\n")[1].trim();
+            }
+
+            if (imc.includes("\n")) {
+                imc = imc.split("\n")[1].trim();
+            }
+
+            console.log(date, imc)
+            data.date.push(date);
+            data.imc.push(imc);
         };
     });
 
-    data.data.reverse();
+    data.date.reverse();
     data.imc.reverse();
 
     return data;

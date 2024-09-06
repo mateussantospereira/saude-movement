@@ -14,7 +14,8 @@ class historicoClient {
                     return returnResponse(202, false, "Nenhuma gravação foi feita por esta pessoa.")
                 }
             })
-            .catch((err) => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.")
             });
     }
@@ -26,6 +27,7 @@ class historicoClient {
                 return returnResponse(201, false, "Dados gravados no histórico com êxito.");
             })
             .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.")
             });
     }
@@ -36,7 +38,8 @@ class historicoClient {
             .then(() => {
                 return returnResponse(201, false, `Registro de histórico deletado com êxito.`);
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.")
             });
     }
@@ -47,7 +50,8 @@ class historicoClient {
             .then(() => {
                 return returnResponse(201, false, `Histórico do colaborador ${ni} deletado com êxito.`);
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.")
             });
     }
@@ -59,6 +63,7 @@ class historicoClient {
                 return returnResponse(201, false, `Tabela truncada com êxito.`);
             })
             .catch((error) => {
+                console.log(error);
                 return returnResponse(400, true, "Erro interno.")
             });
     }

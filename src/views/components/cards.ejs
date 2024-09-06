@@ -1,0 +1,11 @@
+<% if (head) { %>
+    <div class="cards">
+        <% table.forEach((data) => { %>
+            <div class="card">
+                <% Object.keys(head).forEach((key) => { %>
+                    <p><b><%= head[key] %>:</b> <%= data[key] %></p>
+                <% }) %>
+            </div>
+        <% }) %>
+    </div>
+<% } %>

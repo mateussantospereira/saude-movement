@@ -19,7 +19,7 @@ input[type="date"] {
 }
 
 #tipo,
-#turmas {
+#setor {
     outline: 0;
     font-size: 16px;
     height: var(--height-input);
@@ -31,19 +31,34 @@ input[type="date"] {
     background-color: white;
 }
 
-#inputs-turma {
+#inputs-setor {
+    height: var(--height-input);
     display: flex;
     justify-content: space-between;
     width: 270px !important;
 }
 
-#inputs-turma input {
-    width: 60%;
+#inputs-setor input {
+    width: 160px !important;
+    width: 100%;
     border-right: none;
+    margin: 0;
 }
 
-#inputs-turma select {
-    width: 40%;
+#inputs-setor select {
+    width: 110px;
+    border: 0px;
+    border-left: solid 1px gray;
+    background-color: white;
+    padding-left: 10px;
+}
+
+#inputs-setor select:focus {
+    outline: 0;
+}
+
+#inputs-setor select::selection {
+    background-color: blue;
 }
 
 input:autofill {

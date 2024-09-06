@@ -16,6 +16,7 @@
 <script>
     async function getData() {
         let data = await listarDataEIMC()
+        console.log(data)
         generateGraphic(data)
     }
 
@@ -46,7 +47,7 @@
 
             // The data for our dataset
             data: {
-                labels: data.data,
+                labels: data.date,
                 // Information about the dataset
                 datasets: [{
                     label: "IMC",

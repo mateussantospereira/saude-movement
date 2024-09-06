@@ -1,0 +1,27 @@
+.setores-buttons {
+    padding: 2vh 2vw;
+    background-color: var(--gray-2);
+    border: solid 2px rgb(43, 43, 43);
+    color: white;
+    border-radius: 5px;
+    max-width: 70vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.setor-button {
+    border-radius: 5px;
+    margin: 2.5vh 0;
+    padding: 1.7vh;
+    min-width: 18.5vw;
+    border: 5px solid var(--green-2);
+    color: white;
+    min-width: 20vw;
+    background-color: var(--gray-1);
+}
+
+.setor-button:hover {
+    background-color: var(--green-2);
+    border-color: var(--green-4);
+}

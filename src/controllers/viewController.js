@@ -3,6 +3,8 @@ const relatorioUtil = require("../utils/relatorioUtil");
 const registrosUtil = require("../utils/registrosUtil");
 const registrosListarUtil = require("../utils/registrosListarUtil");
 const tiposUtil = require("../utils/tiposUtil");
+const setoresUtil = require("../utils/setoresUtil");
+const setorUtil = require("../utils/setorUtil");
 const registroUtil = require("../utils/registroUtil");
 const path = require("path");
 
@@ -18,13 +20,19 @@ const renderizar = (req, res, body) => {
 
 class viewController {
     async inicio(req, res) {
+        if (req.session.sess.userType == "colaborador") {
+            let email = req.session.sess.email;
+            let route = `/relatorio/${email}`;
+            return res.redirect(route);
+        }
+
         const registros = await registrosListarUtil();
         const json = await colaboradores();
         renderizar(req, res, { body: 'inicio', table: json, registros: registros });
     }
 
     redirecionar(req, res) {
-        res.redirect("/colaboradores");
+        res.redirect("/inicio");
     }
     
     // ---------------------------------------------
@@ -40,8 +48,9 @@ class viewController {
         renderizar(req, res, { body: 'validar', interface: "clean", out: true });
     }
 
-    registrar(req, res) {
-        renderizar(req, res, { body: 'registrar' });
+    async registrar(req, res) {
+        const setores = await setoresUtil();
+        renderizar(req, res, { body: 'registrar', setores: setores });
     }
 
     async registros(req, res) {
@@ -77,6 +86,17 @@ class viewController {
     // ---------------------------------------------
 
     // Colaboradores
+
+    async setores(req, res) {
+        const setores = await setoresUtil();
+        renderizar(req, res, { body: 'setores', setores: setores });
+    }
+
+    async relatorioSetor(req, res) {
+        const { setor } = req.params;
+        const json = await setorUtil(setor);
+        renderizar(req, res, { body: 'relatorio-setor', table: json });
+    }
 
     async colaboradores(req, res) {
         const json = await colaboradores();

@@ -9,6 +9,7 @@ class registroAssistence {
 
         return req.session.sess = {
             userType: type,
+            email: registro.email,
             path: '/', _expires: expires,
             originalMaxAge: expires,
             httpOnly: true

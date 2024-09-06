@@ -1,0 +1,29 @@
+<div>
+    <label>Setor:</label>
+    <div id="inputs-setor">
+        <input type="text" id="setor" value="<%= value %>">
+        <select id="setores" name="none">
+            <option value=""></option>
+
+            <% Object.values(setores).forEach((setor) => { %>
+
+                <option value="<%= setor.setor %>"><%= setor.setor %></option>
+
+            <% }); %>
+            
+        </select>
+    </div>
+</div>
+
+<script>
+    const setores = document.getElementById("setores");
+    const option = setores.getElementsByTagName("option")
+    const setor = document.getElementById("setor");
+
+    setores.addEventListener("change", (event) => {
+        event.preventDefault();
+
+        let value = setores.options[setores.selectedIndex].value
+        setor.value = value;
+    });
+</script>

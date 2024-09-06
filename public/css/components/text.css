@@ -1,10 +1,14 @@
 #textIMC {
-    width: 60vw;
+    max-width: 70vw;
     background-color: white;
-
-    padding: 0 1vw;
+    box-sizing: border-box;
+    padding: 0 0;
     border: 7px rgb(57, 57, 57) solid;
     margin-bottom: 2vh;
+}
+
+#textIMC p {
+    margin: 16px;
 }
 
 #textUso {

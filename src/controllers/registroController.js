@@ -24,8 +24,19 @@ class registroController {
         return res.status(response.status).json(response);
     }
 
+    async listarPorSetor(req, res) {
+        const { setor } = req.params;
+        const response = await registroClient.listarPorSetor(setor);
+        return res.status(response.status).json(response);
+    }
+
     async listarTipos(req, res) {
         const response = await registroClient.listarTipos();
+        return res.status(response.status).json(response);
+    }
+
+    async listarSetores(req, res) {
+        const response = await registroClient.listarSetores();
         return res.status(response.status).json(response);
     }
 
@@ -183,6 +194,7 @@ class registroController {
                     for (let line of data) {
                         let email = line.email;
                         delete line.email;
+                        
                         const registro = await registroSupport.atualizar(email, line);
 
                         if (registro.status != 200) {
@@ -343,13 +355,8 @@ class registroController {
     async deletar(req, res) {
         const { email } = req.params;
         const client = await registroClient.deletar(email);
-
-        if (client.status != 200) {
-            return res.status(client.status).json(client);
-        }
-
         const historico = await historicoClient.deletar(email);
-        return res.status(historico.status).json(historico);
+        return res.status(client.status).json(client);
     }
 }
 

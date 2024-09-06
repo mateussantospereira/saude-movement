@@ -1,6 +1,10 @@
-<h2>Gestão de Saúde Movement</h2>
+<div class="center">
+    <h2>Gestão de Saúde Movement</h2>
+</div>
 
-<p>Este é um projeto criado para a empresa Movement. Este projeto tem a finalidade de controlar as informações de saúde dos funcionários da empresa. As informações são enviadas para a aplicação e armazenadas em um banco de dados.</p>
+<p>31/08/2024</p>
+
+<p>Este é um projeto criado para a empresa Movement. Este projeto tem a finalidade de gerenciar as informações de saúde dos funcionários da empresa. As informações são enviadas para a aplicação e armazenadas em um banco de dados.</p>
 
 <p>Este projeto é baseado em Node JS. Utilizando um banco de dados MariaDB. O Front-End foi construído com a View Engine, EJS.</p>
 

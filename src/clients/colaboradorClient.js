@@ -12,7 +12,9 @@ class colaboradorClient {
                     return returnResponse(202, false, "Nenhum colaborador existente.");
                 }
             })
-            .catch(() => { return returnResponse(400, true, "Erro interno.") });
+            .catch((error) => {
+                console.log(error)
+                return returnResponse(400, true, "Erro interno.") });
     }
 
     async buscar(email) {
@@ -25,7 +27,8 @@ class colaboradorClient {
                     return returnResponse(404, true, "Colaborador inexistente.");
                 }
             })
-            .catch(() => { 
+            .catch((error) => {
+                console.log(error)
                 return returnResponse(400, true, "Erro interno.") 
             });
     }
@@ -40,7 +43,9 @@ class colaboradorClient {
                     return returnResponse(404, true, "Colaborador inexistente.");
                 }
             })
-            .catch(() => { return returnResponse(400, true, "Erro interno.") });
+            .catch((error) => {
+                console.log(error)
+                return returnResponse(400, true, "Erro interno.") });
     }
 
     async criar(data) {
@@ -49,7 +54,8 @@ class colaboradorClient {
             .then(() => {
                 return returnResponse(201, false, "Agente registrado com sucesso.");
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error)
                 return returnResponse(400, true, "Erro interno.");
             });
     }
@@ -60,7 +66,8 @@ class colaboradorClient {
             .then(() => {
                 return returnResponse(200, false, "Colaborador modificado com êxito.");
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error)
                 return returnResponse(400, true, "Erro interno.");
             });
     }
@@ -71,7 +78,8 @@ class colaboradorClient {
             .then(() => {
                 return returnResponse(200, false, "Colaborador deletado com êxito.");
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error)
                 return returnResponse(400, true, "Erro interno.");
             });
     }
