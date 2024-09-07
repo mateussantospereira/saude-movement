@@ -4,11 +4,16 @@ const xlsxService = require("../services/xlsxService");
 const historicoSupport = require("../supports/historicoSupport");
 const deleteFile = require("../helpers/deleteImportedFile");
 
-
 class historicoController {
     async listar(req, res) {
         const { email } = req.params;
         const client = await historicoClient.listar(email);
+        return res.status(client.status).json(client);
+    }
+
+    async historicoPorSetor(req, res) {
+        const { setor } = req.params;
+        const client = await historicoClient.historicoPorSetor(setor);
         return res.status(client.status).json(client);
     }
 

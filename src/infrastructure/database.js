@@ -31,9 +31,8 @@ class database {
     async createTableRegistros() {
         const sql = `
             CREATE TABLE IF NOT EXISTS registros (
-                id int auto_increment primary key,
+                email varchar(100) not null primary key,
                 nome varchar(100) not null,
-                email varchar(100) not null,
                 senha varchar(100) not null,
                 tipo varchar(25) not null,
                 setor varchar(25) not null,
@@ -56,7 +55,8 @@ class database {
                 idade varchar(100) not null,
                 imc varchar(100),
                 saude varchar(100),
-                data date
+                data date,
+                foreign key(email) references registros(email)
             );
         `;
 

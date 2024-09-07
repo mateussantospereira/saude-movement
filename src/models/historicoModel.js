@@ -6,6 +6,11 @@ class historicoModel {
         return await executeQuery(sql, email);
     }
 
+    async historicoPorSetor(setor) {
+        const sql = "SELECT historico.email, historico.data, historico.idade, historico.imc, historico.saude FROM registros JOIN historico ON registros.email = historico.email WHERE setor = ? ORDER BY historico.data;";
+        return await executeQuery(sql, setor);
+    }
+
     async gravar(data) {
         const sql = "INSERT INTO historico SET ?";
         return await executeQuery(sql, data);

@@ -61,6 +61,7 @@ router.delete("/registro/deletar/:email", valideSession.adm, rateLimiter, regist
 // Histórico Controller
 
 router.get("/historico/listar/:email", historicoController.listar);
+router.get("/historico/setor/:setor", historicoController.historicoPorSetor);
 router.post("/historico/importar", historicoController.importar);
 router.delete("/historico/deletar-antigo/:email", rateLimiter, historicoController.deletarAntigo);
 

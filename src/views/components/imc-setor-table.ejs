@@ -1,0 +1,13 @@
+<% head = {
+    data: "Data",
+    media: "Média"
+} %>
+
+
+<div style="display: none;">
+    <%- include('./table', {
+        head: head,
+    
+        table: table["data"]
+    }) %>
+</div>

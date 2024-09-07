@@ -1,0 +1,31 @@
+<%
+    total = 0;
+    quant = 0
+%>
+
+<% table.data.forEach((f) => {
+
+    if (Number(f.imc)) {
+        total = Number(total) + Number(f.imc - (f.imc % 0.01));
+        quant = Number(quant) + 1;
+    }
+
+}) %>
+
+<%
+    media = Number(total) / Number(quant);
+    media = Number(media) - (Number(media % 0.01));
+%>
+
+<div class="cont-1">
+    <div>
+        <div class="center">
+            <p>Media de IMC:</p>
+        </div>
+        <div class="center">
+
+            <h1><%= media %></h1>
+        </div>
+        
+    </div>
+</div>

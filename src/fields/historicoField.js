@@ -23,7 +23,7 @@ class historicoField {
     }
 
     async limitReport() {
-        return 10;
+        return 15;
     }
 }
 

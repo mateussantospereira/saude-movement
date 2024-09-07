@@ -1,0 +1,56 @@
+<div class="graphic-2">
+    <%- include("./imc-setor-table", { table: table }) %>
+
+    <div>
+        <canvas id="graphic-imc"></canvas>
+    </div>
+</div>
+
+
+
+<script src="/public/js/libraries/chart.js"></script>
+
+<script>
+    async function getData() {
+        let data = await listarDataEIMCSetor()
+        generateGraphic(data)
+    }
+
+    function generateGraphic(data) {
+        const ctx = document.getElementById('graphic-imc');
+
+        new Chart(ctx, {
+            type: 'line', // also try bar or other graph types
+
+            // The data for our dataset
+            data: {
+                labels: data.date,
+                // Information about the dataset
+                datasets: [{
+                    label: "Média de IMC do Setor",
+                    backgroundColor: 'red',
+                    borderColor: '#be1717',
+                    data: data.imc,
+                }]
+            },
+
+            // Configuration options
+            options: {
+                layout: {
+                    padding: 10,
+                },
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Precipitation in Toronto'
+                }
+            }
+        });
+    }
+
+    setTimeout((func) => { getData() }, 10)
+
+
+</script>

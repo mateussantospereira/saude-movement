@@ -5,6 +5,7 @@ const registrosListarUtil = require("../utils/registrosListarUtil");
 const tiposUtil = require("../utils/tiposUtil");
 const setoresUtil = require("../utils/setoresUtil");
 const setorUtil = require("../utils/setorUtil");
+const historicoSetorIMC = require("../utils/historicoSetorIMC");
 const registroUtil = require("../utils/registroUtil");
 const path = require("path");
 
@@ -94,8 +95,9 @@ class viewController {
 
     async relatorioSetor(req, res) {
         const { setor } = req.params;
+        const historico = await historicoSetorIMC(setor);
         const json = await setorUtil(setor);
-        renderizar(req, res, { body: 'relatorio-setor', table: json });
+        renderizar(req, res, { body: 'relatorio-setor', table: json, historico: historico });
     }
 
     async colaboradores(req, res) {

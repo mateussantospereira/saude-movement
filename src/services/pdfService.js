@@ -11,7 +11,7 @@ class pdfService {
     }
 
     async gerarHTML(data, head, text) {
-        let lines = 5;
+        let lines = 20;
         let count = 0;
         let pages = "";
         let thead = `<thead>`;

@@ -20,6 +20,22 @@ class historicoClient {
             });
     }
 
+    async historicoPorSetor(setor) {
+        const model = historicoModel.historicoPorSetor(setor);
+        return model
+            .then((historico) => {
+                if (historico[0]) {
+                    return returnResponse(200, false, "Relatório listado com êxito.", historico)
+                } else {
+                    return returnResponse(202, false, "Nenhuma histórico encontrado.")
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                return returnResponse(400, true, "Erro interno.")
+            });
+    }
+
     async gravar(data) {
         const model = historicoModel.gravar(data);
         return model

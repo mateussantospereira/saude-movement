@@ -178,6 +178,39 @@ function listarDataEIMC() {
     return data;
 }
 
+function listarDataEIMCSetor() {
+    let table = document.getElementsByTagName("tbody")[0];
+    let data = {
+        date: [],
+        imc: []
+    };
+    const linhas = table.getElementsByTagName("tr");
+    console.log(linhas)
+
+    Object.values(linhas).forEach((linha) => {
+        if (Number(linha.children[1].innerText)) {
+            let date = linha.children[0].innerText;
+            let imc = linha.children[1].innerText;
+
+            if (date.includes("\n")) {
+                date = date.split("\n")[1].trim();
+            }
+
+            if (imc.includes("\n")) {
+                imc = imc.split("\n")[1].trim();
+            }
+
+            data.date.push(date);
+            data.imc.push(imc);
+        };
+    });
+
+    data.date.reverse();
+    data.imc.reverse();
+
+    return data;
+}
+
 function enviarLista(func, button) {
     let list = listarEmails();
     let carregando = document.getElementById("carregando");

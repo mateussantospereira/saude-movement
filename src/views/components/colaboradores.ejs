@@ -2,6 +2,7 @@
     <div class="table">
         <% head = {
             nome: "Nome",
+            setor: "Setor"
         } %>
 
         <% if (email) { %>
@@ -17,8 +18,6 @@
         <% if (report) { %>
             <% head.relatorio = "Relatório" %>
         <% } %>
-
-       
 
         <%- include('./table', {
             head: head,
